@@ -8,14 +8,14 @@ enum PlantType {
 }
 
 class PlantModel {
-  int id;
-  bool isActive;
-  PlantType type;
-  int price;
-  int energy;
-  double duration;
+  final int id;
+  final bool isActive;
+  final PlantType type;
+  final int price;
+  final int energy;
+  final double duration;
 
-  PlantModel({
+  const PlantModel({
     this.id = 0,
     this.isActive = false,
     this.type = PlantType.hydroPlant,

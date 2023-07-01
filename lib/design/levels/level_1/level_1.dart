@@ -1,13 +1,37 @@
+import 'dart:async';
+
 import 'package:energy_builder/data/models/plant.dart';
 import 'package:energy_builder/design/levels/level_1/bloc/level1_bloc.dart';
 import 'package:energy_builder/design/widgets/plant.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../widgets/plant_option.dart';
 
-class Level1 extends StatelessWidget {
+class Level1 extends StatefulWidget {
   const Level1({super.key});
+
+  @override
+  State<Level1> createState() => _Level1State();
+}
+
+class _Level1State extends State<Level1> {
+  Timer timer = Timer(const Duration(), () {});
+
+  @override
+  void initState() {
+    super.initState();
+    timer = Timer.periodic(const Duration(seconds: 1), (timer) {
+      setState(() {});
+    });
+  }
+
+  @override
+  void dispose() {
+    timer.cancel();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,6 +49,22 @@ class Level1 extends StatelessWidget {
               Icons.bolt,
               size: 100,
               color: Colors.green,
+            ),
+            IconButton(
+              onPressed: () {
+                context.pop();
+              },
+              icon: const Icon(
+                Icons.update_rounded,
+              ),
+            ),
+            const SizedBox(height: 20),
+            Text(
+              '${bloc.state.energy} / ${bloc.state.targetEnergy}',
+              style: const TextStyle(
+                color: Colors.white,
+                fontSize: 30,
+              ),
             ),
             const SizedBox(height: 20),
             Container(

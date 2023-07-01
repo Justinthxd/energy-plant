@@ -5,5 +5,11 @@ abstract class Level1Event {
 }
 
 class TogglePlant extends Level1Event {
-  const TogglePlant();
+  final PlantModel plant;
+
+  const TogglePlant(this.plant);
+}
+
+class TestEvent extends Level1Event {
+  const TestEvent();
 }

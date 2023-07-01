@@ -19,7 +19,8 @@ class WidgetPlant extends StatelessWidget {
     final bloc = context.watch<Level1Bloc>();
     return GestureDetector(
       onTap: () {
-        bloc.add(TogglePlant());
+        // bloc.add(TogglePlant(plant));
+        bloc.add(TestEvent());
       },
       child: AnimatedSwitcher(
         duration: const Duration(seconds: 1),
