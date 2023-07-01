@@ -1,8 +1,10 @@
+import 'package:energy_builder/design/levels/level_1/bloc/level1_bloc.dart';
 import 'package:flutter/material.dart';
 
 import 'package:energy_builder/data/dictionary/dictionary.dart';
 import 'package:energy_builder/data/models/plant.dart';
 import 'package:energy_builder/design/widgets/block.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class WidgetPlant extends StatelessWidget {
   const WidgetPlant({
@@ -14,8 +16,11 @@ class WidgetPlant extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final bloc = context.watch<Level1Bloc>();
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        bloc.add(TogglePlant());
+      },
       child: AnimatedSwitcher(
         duration: const Duration(seconds: 1),
         child: plant.isActive

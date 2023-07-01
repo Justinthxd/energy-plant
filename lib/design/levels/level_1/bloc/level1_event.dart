@@ -1,8 +1,9 @@
 part of 'level1_bloc.dart';
 
-abstract class Level1Event extends Equatable {
+abstract class Level1Event {
   const Level1Event();
+}
 
-  @override
-  List<Object> get props => [];
+class TogglePlant extends Level1Event {
+  const TogglePlant();
 }

@@ -1,6 +1,8 @@
 import 'package:energy_builder/data/models/plant.dart';
+import 'package:energy_builder/design/levels/level_1/bloc/level1_bloc.dart';
 import 'package:energy_builder/design/widgets/plant.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../widgets/plant_option.dart';
 
@@ -10,6 +12,7 @@ class Level1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+    final bloc = context.watch<Level1Bloc>();
     return Scaffold(
       body: Container(
         decoration: const BoxDecoration(
@@ -33,9 +36,10 @@ class Level1 extends StatelessWidget {
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 3,
                 ),
-                itemCount: 1,
+                itemCount: bloc.state.plants.length,
                 itemBuilder: (context, index) {
-                  return WidgetPlant(plant: PlantModel());
+                  final plant = bloc.state.plants[index];
+                  return WidgetPlant(plant: plant);
                 },
               ),
             ),
