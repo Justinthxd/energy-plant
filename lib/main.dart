@@ -1,7 +1,7 @@
 import 'package:energy_builder/config/router/router.dart';
-import 'package:energy_builder/design/levels/level_1/bloc/level1_bloc.dart';
+import 'package:energy_builder/design/levels/level_1/provider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:provider/provider.dart';
 
 import 'config/theme/theme.dart';
 
@@ -12,11 +12,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
+    return MultiProvider(
       providers: [
-        BlocProvider(
-          create: (context) => Level1Bloc(),
-        )
+        ChangeNotifierProvider(
+          create: (_) => Level1Provider(),
+        ),
       ],
       child: MaterialApp.router(
         debugShowCheckedModeBanner: false,

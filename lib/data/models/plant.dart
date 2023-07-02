@@ -36,11 +36,11 @@ class PlantModel {
 
   int getPrice() {
     return switch (type) {
-      PlantType.hydroPlant => 1,
-      PlantType.solarPlant => 5,
-      PlantType.electricPlant => 7,
-      PlantType.chemicalPlant => 10,
-      PlantType.nuclearPlant => 20,
+      PlantType.hydroPlant => 100,
+      PlantType.solarPlant => 200,
+      PlantType.electricPlant => 300,
+      PlantType.chemicalPlant => 1000,
+      PlantType.nuclearPlant => 2000,
     };
   }
 

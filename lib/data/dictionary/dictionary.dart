@@ -30,3 +30,13 @@ String getName(PlantType type) {
     PlantType.nuclearPlant => 'Nuclear',
   };
 }
+
+int getPrice(PlantType type) {
+  return switch (type) {
+    PlantType.hydroPlant => 100,
+    PlantType.solarPlant => 200,
+    PlantType.electricPlant => 300,
+    PlantType.chemicalPlant => 400,
+    PlantType.nuclearPlant => 500,
+  };
+}

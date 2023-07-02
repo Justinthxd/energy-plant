@@ -6,18 +6,17 @@ class EmptyBlock extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 100,
-      width: 100,
+      alignment: Alignment.center,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
         border: Border.all(
-          color: Colors.white10,
+          color: Colors.white24,
         ),
       ),
       child: const Icon(
         Icons.add_rounded,
         size: 40,
-        color: Colors.white10,
+        color: Colors.white24,
       ),
     );
   }
