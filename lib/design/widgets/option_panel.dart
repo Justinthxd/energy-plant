@@ -8,13 +8,12 @@ class OptionPanel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
     return Container(
-      height: size.height * 0.1,
+      height: 90,
       decoration: const BoxDecoration(),
-      child: const Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
+      child: ListView(
+        scrollDirection: Axis.horizontal,
+        children: const [
           PlantOption(type: PlantType.hydroPlant),
           PlantOption(type: PlantType.solarPlant),
           PlantOption(type: PlantType.electricPlant),

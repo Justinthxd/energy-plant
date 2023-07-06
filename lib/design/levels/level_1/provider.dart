@@ -126,6 +126,7 @@ class Level1Provider extends ChangeNotifier {
     final activePlants = plants.where((plant) => plant.isActive).toList();
 
     for (var i = 0; i < activePlants.length; i++) {
+      setMoney = money + activePlants[i].getEarning();
       setEnergy = energy + activePlants[i].getEnergy();
       if (energy > targetEnergy) {
         setEnergy = targetEnergy;

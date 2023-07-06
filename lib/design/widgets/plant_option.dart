@@ -12,41 +12,59 @@ class PlantOption extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final provider = context.watch<Level1Provider>();
-    return Column(
-      children: [
-        IconButton(
-          style: IconButton.styleFrom(
-            backgroundColor: provider.currentPlantType == type
-                ? getColor(type)
-                : Colors.transparent,
-          ),
-          onPressed: () {
-            provider.setCurrentPlantType = type;
-          },
-          icon: Icon(
-            getIcon(type),
-            color: provider.currentPlantType == type
-                ? Colors.white
-                : getColor(type),
-          ),
+    return GestureDetector(
+      onTap: () {
+        provider.setCurrentPlantType = type;
+      },
+      child: Container(
+        height: 90,
+        width: 90,
+        padding: const EdgeInsets.all(5),
+        margin: const EdgeInsets.symmetric(horizontal: 20),
+        decoration: BoxDecoration(
+          color: provider.currentPlantType == type
+              ? getColor(type)
+              : Colors.transparent,
+          borderRadius: BorderRadius.circular(10),
         ),
-        Row(
+        child: Column(
           children: [
-            Text(
-              '${getPrice(type)}',
-              style: const TextStyle(
-                color: Colors.white,
-                fontSize: 20,
-              ),
+            const Spacer(),
+            Icon(
+              getIcon(type),
+              size: 30,
+              color: provider.currentPlantType == type
+                  ? Colors.white
+                  : getColor(type),
             ),
-            const Icon(
-              Icons.attach_money_rounded,
-              color: Colors.green,
-              size: 20,
+            const Spacer(),
+            Container(
+              decoration: BoxDecoration(
+                color: Colors.black.withOpacity(0.2),
+                borderRadius: BorderRadius.circular(5),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    '${getPrice(type)}',
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  const Icon(
+                    Icons.attach_money_rounded,
+                    color: Colors.green,
+                    size: 20,
+                  ),
+                ],
+              ),
             ),
           ],
         ),
-      ],
+      ),
     );
   }
 }

@@ -26,9 +26,9 @@ class PlantModel {
 
   int getEnergy() {
     return switch (type) {
-      PlantType.hydroPlant => 2,
-      PlantType.solarPlant => 5,
-      PlantType.electricPlant => 15,
+      PlantType.hydroPlant => 1,
+      PlantType.solarPlant => 2,
+      PlantType.electricPlant => 10,
       PlantType.chemicalPlant => 25,
       PlantType.nuclearPlant => 50,
     };
@@ -37,10 +37,20 @@ class PlantModel {
   int getPrice() {
     return switch (type) {
       PlantType.hydroPlant => 100,
-      PlantType.solarPlant => 200,
+      PlantType.solarPlant => 150,
       PlantType.electricPlant => 300,
       PlantType.chemicalPlant => 1000,
       PlantType.nuclearPlant => 2000,
+    };
+  }
+
+  int getEarning() {
+    return switch (type) {
+      PlantType.hydroPlant => 1,
+      PlantType.solarPlant => 2,
+      PlantType.electricPlant => 10,
+      PlantType.chemicalPlant => 15,
+      PlantType.nuclearPlant => 20,
     };
   }
 

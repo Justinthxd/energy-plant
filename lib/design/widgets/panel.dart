@@ -1,4 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:animated_digit/animated_digit.dart';
 import 'package:flutter/material.dart';
 
 class Panel extends StatelessWidget {
@@ -13,6 +14,12 @@ class Panel extends StatelessWidget {
   final int targetEnergy;
   final int money;
 
+  final TextStyle digitStyle = const TextStyle(
+    color: Colors.white60,
+    fontSize: 20,
+    fontWeight: FontWeight.bold,
+  );
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -26,12 +33,12 @@ class Panel extends StatelessWidget {
                 color: Colors.green,
                 size: 30,
               ),
-              Text(
-                '$money',
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 20,
-                ),
+              AnimatedDigitWidget(
+                value: money,
+                enableSeparator: true,
+                textStyle: digitStyle,
+                duration: const Duration(milliseconds: 300),
+                curve: Curves.easeOut,
               ),
             ],
           ),
@@ -43,12 +50,23 @@ class Panel extends StatelessWidget {
                 color: Colors.yellow,
                 size: 30,
               ),
+              AnimatedDigitWidget(
+                value: energy,
+                enableSeparator: true,
+                textStyle: digitStyle,
+                duration: const Duration(seconds: 1),
+                curve: Curves.easeOut,
+              ),
               Text(
-                '$energy / $targetEnergy',
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 20,
-                ),
+                '/',
+                style: digitStyle,
+              ),
+              AnimatedDigitWidget(
+                value: targetEnergy,
+                enableSeparator: true,
+                textStyle: digitStyle,
+                duration: const Duration(seconds: 1),
+                curve: Curves.easeOut,
               ),
             ],
           ),

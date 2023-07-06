@@ -34,7 +34,7 @@ String getName(PlantType type) {
 int getPrice(PlantType type) {
   return switch (type) {
     PlantType.hydroPlant => 100,
-    PlantType.solarPlant => 200,
+    PlantType.solarPlant => 150,
     PlantType.electricPlant => 300,
     PlantType.chemicalPlant => 400,
     PlantType.nuclearPlant => 500,
