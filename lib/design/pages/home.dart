@@ -6,58 +6,71 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Scaffold(
+      backgroundColor: Colors.black,
       body: Container(
-        decoration: const BoxDecoration(),
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Icon(
-                Icons.bolt,
-                size: 100,
-                color: Colors.green,
+        width: size.width,
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: [
+              Colors.green.withOpacity(0.2),
+              Colors.blue.withOpacity(0.2),
+            ],
+          ),
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Icon(
+              Icons.bolt,
+              size: 120,
+              color: Colors.lightGreenAccent,
+            ),
+            const SizedBox(height: 20),
+            const Text(
+              'Energy Builder',
+              style: TextStyle(
+                fontSize: 30,
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+                shadows: [
+                  BoxShadow(
+                    blurRadius: 10,
+                    color: Colors.black54,
+                    offset: Offset(0, 0),
+                  ),
+                ],
               ),
-              const SizedBox(height: 20),
-              const Text(
-                'Energy Builder',
+            ),
+            const SizedBox(height: 80),
+            // create a good start button
+            ElevatedButton(
+              onPressed: () {
+                context.go('/level1');
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.green,
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 30,
+                  vertical: 15,
+                ),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+              ),
+              child: const Text(
+                'Start',
                 style: TextStyle(
-                  fontSize: 30,
+                  fontSize: 20,
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              const SizedBox(height: 100),
-              GestureDetector(
-                onTap: () {
-                  context.pushNamed('/level1');
-                },
-                child: Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 30,
-                    vertical: 15,
-                  ),
-                  decoration: const BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(15)),
-                    gradient: LinearGradient(
-                      colors: [
-                        Colors.green,
-                        Colors.blue,
-                      ],
-                    ),
-                  ),
-                  child: const Text(
-                    'Levels',
-                    style: TextStyle(
-                      fontSize: 20,
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

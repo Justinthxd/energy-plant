@@ -10,13 +10,13 @@ class EmptyBlock extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
         border: Border.all(
-          color: Colors.white24,
+          color: Colors.white.withOpacity(0.03),
         ),
       ),
       child: const Icon(
         Icons.add_rounded,
         size: 40,
-        color: Colors.white24,
+        color: Colors.white38,
       ),
     );
   }

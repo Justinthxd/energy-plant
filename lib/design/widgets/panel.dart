@@ -1,6 +1,7 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:animated_digit/animated_digit.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../levels/level_1/provider.dart';
 
 class Panel extends StatelessWidget {
   const Panel({
@@ -12,61 +13,105 @@ class Panel extends StatelessWidget {
 
   final int energy;
   final int targetEnergy;
-  final int money;
+  final double money;
 
   final TextStyle digitStyle = const TextStyle(
-    color: Colors.white60,
+    color: Colors.white,
     fontSize: 20,
     fontWeight: FontWeight.bold,
   );
 
   @override
   Widget build(BuildContext context) {
+    final provider = context.watch<Level1Provider>();
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 15),
       child: Column(
         children: [
           Row(
             children: [
-              const Icon(
-                Icons.attach_money_rounded,
-                color: Colors.green,
-                size: 30,
+              const Text(
+                'Level 1',
+                style: TextStyle(
+                  color: Colors.white38,
+                  fontSize: 30,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
-              AnimatedDigitWidget(
-                value: money,
-                enableSeparator: true,
-                textStyle: digitStyle,
-                duration: const Duration(milliseconds: 300),
-                curve: Curves.easeOut,
+              const Spacer(),
+              Text(
+                provider.getTimeFormatted(),
+                style: const TextStyle(
+                  color: Colors.white38,
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const SizedBox(width: 10),
+              const Icon(
+                Icons.pause,
+                color: Colors.white70,
               ),
             ],
           ),
-          const SizedBox(height: 10),
+          Divider(
+            height: 5,
+            color: Colors.white.withOpacity(0.03),
+          ),
+          const SizedBox(height: 20),
           Row(
             children: [
               const Icon(
                 Icons.bolt_rounded,
                 color: Colors.yellow,
-                size: 30,
+                size: 25,
               ),
-              AnimatedDigitWidget(
-                value: energy,
-                enableSeparator: true,
-                textStyle: digitStyle,
-                duration: const Duration(seconds: 1),
-                curve: Curves.easeOut,
+              Text(
+                '$energy',
+                style: digitStyle,
               ),
               Text(
                 '/',
                 style: digitStyle,
               ),
-              AnimatedDigitWidget(
-                value: targetEnergy,
-                enableSeparator: true,
-                textStyle: digitStyle,
-                duration: const Duration(seconds: 1),
-                curve: Curves.easeOut,
+              Text(
+                '$targetEnergy',
+                style: digitStyle.copyWith(
+                  fontSize: 19,
+                  color: Colors.white60,
+                ),
+              ),
+              const Spacer(),
+              const Icon(
+                Icons.attach_money_rounded,
+                color: Colors.green,
+                size: 25,
+              ),
+              Text(
+                '${money.round()}',
+                style: digitStyle,
+              ),
+            ],
+          ),
+          const SizedBox(height: 5),
+          Row(
+            children: [
+              const SizedBox(width: 5),
+              SizedBox(
+                width: 130,
+                child: TweenAnimationBuilder<double>(
+                  duration: const Duration(milliseconds: 250),
+                  curve: Curves.easeInOut,
+                  tween: Tween(
+                    begin: 0,
+                    end: energy / targetEnergy,
+                  ),
+                  builder: (context, value, _) => LinearProgressIndicator(
+                    color: Colors.yellow,
+                    backgroundColor: Colors.black26,
+                    value: value,
+                  ),
+                ),
               ),
             ],
           ),

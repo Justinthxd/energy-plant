@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 
 class Level1Provider extends ChangeNotifier {
   List<PlantModel> plants = [
-    for (int i = 0; i < 9; i++)
+    for (int i = 0; i < 4; i++)
       PlantModel(
         id: i,
       ),
@@ -18,11 +18,11 @@ class Level1Provider extends ChangeNotifier {
     notifyListeners();
   }
 
-  int money = 500;
+  double money = 250;
 
-  int get getMoney => money;
+  double get getMoney => money;
 
-  set setMoney(int money) {
+  set setMoney(double money) {
     this.money = money;
     notifyListeners();
   }
@@ -40,7 +40,7 @@ class Level1Provider extends ChangeNotifier {
 
   int energy = 0;
 
-  int targetEnergy = 500;
+  int targetEnergy = 600;
 
   int get getEnergy => energy;
 
@@ -58,6 +58,31 @@ class Level1Provider extends ChangeNotifier {
 
   // - - - - - - - - - - - - - - - - - - - - //
 
+  int time = 60;
+
+  int get getTime => time;
+
+  set setTime(int time) {
+    this.time = time;
+    notifyListeners();
+  }
+
+  getTimeFormatted() {
+    int minutes = 0;
+    int seconds = time;
+
+    for (int i = 0; seconds > 59; i++) {
+      if (seconds > 59) {
+        minutes++;
+        seconds -= 60;
+      }
+    }
+
+    return "${minutes.toString().padLeft(2, '0')}:${seconds.toString().padLeft(2, '0')}";
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - //
+
   Timer timer = Timer(Duration.zero, () {});
 
   startTimer() {
@@ -68,7 +93,9 @@ class Level1Provider extends ChangeNotifier {
 
     if (!timer.isActive) {
       timer = Timer.periodic(const Duration(seconds: 1), (timer) {
-        if (energy < targetEnergy) {
+        if (time <= 0) {
+          timer.cancel();
+        } else if (energy < targetEnergy) {
           logic();
           notifyListeners();
         } else {
@@ -124,6 +151,8 @@ class Level1Provider extends ChangeNotifier {
 
   void logic() {
     final activePlants = plants.where((plant) => plant.isActive).toList();
+
+    setTime = getTime - 1;
 
     for (var i = 0; i < activePlants.length; i++) {
       setMoney = money + activePlants[i].getEarning();

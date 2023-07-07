@@ -23,7 +23,7 @@ class PlantOption extends StatelessWidget {
         margin: const EdgeInsets.symmetric(horizontal: 20),
         decoration: BoxDecoration(
           color: provider.currentPlantType == type
-              ? getColor(type)
+              ? Colors.white.withOpacity(0.08)
               : Colors.transparent,
           borderRadius: BorderRadius.circular(10),
         ),
@@ -33,9 +33,7 @@ class PlantOption extends StatelessWidget {
             Icon(
               getIcon(type),
               size: 30,
-              color: provider.currentPlantType == type
-                  ? Colors.white
-                  : getColor(type),
+              color: getColor(type),
             ),
             const Spacer(),
             Container(

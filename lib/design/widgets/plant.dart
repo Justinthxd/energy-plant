@@ -39,17 +39,6 @@ class WidgetPlant extends StatelessWidget {
                 ),
                 child: Stack(
                   children: [
-                    const Positioned(
-                      top: 5,
-                      right: 10,
-                      child: Text(
-                        '5',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
                     Center(
                       child: Icon(
                         getIcon(plant.type),
