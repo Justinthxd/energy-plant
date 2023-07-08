@@ -42,7 +42,7 @@ class Home extends StatelessWidget {
             // create a good start button
             ElevatedButton(
               onPressed: () {
-                context.go('/level1');
+                context.go('/levelOpc');
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: const Color.fromARGB(255, 2, 100, 5),
