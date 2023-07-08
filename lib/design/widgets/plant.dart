@@ -43,10 +43,7 @@ class WidgetPlant extends StatelessWidget {
                       top: 0,
                       right: 0,
                       child: GestureDetector(
-                        onTap: () {
-                          const PopupMenuItem(
-                              child: Icon(Icons.money_off_csred_rounded));
-                        },
+                        onTap: () {},
                         child: Container(
                           height: 45,
                           width: 45,
