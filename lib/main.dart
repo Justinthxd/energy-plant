@@ -22,7 +22,8 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Energy Builder',
         routerConfig: router,
-        theme: AppTheme.getTheme(),
+        // theme: AppTheme.getTheme(),
+        theme: ThemeData.dark(),
       ),
     );
   }
