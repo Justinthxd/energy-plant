@@ -15,6 +15,7 @@ class OptionPanel extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         children: const [
           PlantOption(type: PlantType.hydroPlant),
+          PlantOption(type: PlantType.windPlant),
           PlantOption(type: PlantType.solarPlant),
           PlantOption(type: PlantType.electricPlant),
           PlantOption(type: PlantType.chemicalPlant),

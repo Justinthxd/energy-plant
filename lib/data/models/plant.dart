@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 enum PlantType {
   hydroPlant,
+  windPlant,
   solarPlant,
   electricPlant,
   chemicalPlant,
@@ -27,7 +28,8 @@ class PlantModel {
   int getEnergy() {
     return switch (type) {
       PlantType.hydroPlant => 1,
-      PlantType.solarPlant => 3,
+      PlantType.windPlant => 3,
+      PlantType.solarPlant => 4,
       PlantType.electricPlant => 5,
       PlantType.chemicalPlant => 14,
       PlantType.nuclearPlant => 30,
@@ -37,6 +39,7 @@ class PlantModel {
   int getPrice() {
     return switch (type) {
       PlantType.hydroPlant => 100,
+      PlantType.windPlant => 125,
       PlantType.solarPlant => 150,
       PlantType.electricPlant => 200,
       PlantType.chemicalPlant => 300,
@@ -47,6 +50,7 @@ class PlantModel {
   double getEarning() {
     return switch (type) {
       PlantType.hydroPlant => 1.5,
+      PlantType.windPlant => 2.5,
       PlantType.solarPlant => 2.7,
       PlantType.electricPlant => 3.9,
       PlantType.chemicalPlant => 4.1,

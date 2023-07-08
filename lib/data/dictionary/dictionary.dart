@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 IconData getIcon(PlantType type) {
   return switch (type) {
     PlantType.hydroPlant => Icons.water_drop_rounded,
+    PlantType.windPlant => Icons.air_rounded,
     PlantType.solarPlant => Icons.light_mode_rounded,
     PlantType.electricPlant => Icons.electric_bolt_rounded,
     PlantType.chemicalPlant => Icons.science_rounded,
@@ -14,6 +15,7 @@ IconData getIcon(PlantType type) {
 Color getColor(PlantType type) {
   return switch (type) {
     PlantType.hydroPlant => const Color.fromARGB(255, 47, 145, 231),
+    PlantType.windPlant => const Color.fromARGB(255, 100, 100, 100),
     PlantType.solarPlant => const Color.fromARGB(255, 249, 198, 71),
     PlantType.electricPlant => const Color.fromARGB(255, 233, 64, 70),
     PlantType.chemicalPlant => Colors.purple,
@@ -24,6 +26,7 @@ Color getColor(PlantType type) {
 String getName(PlantType type) {
   return switch (type) {
     PlantType.hydroPlant => 'Hydro',
+    PlantType.windPlant => 'Wind',
     PlantType.solarPlant => 'Solar',
     PlantType.electricPlant => 'Electric',
     PlantType.chemicalPlant => 'Chemical',
@@ -34,6 +37,7 @@ String getName(PlantType type) {
 int getPrice(PlantType type) {
   return switch (type) {
     PlantType.hydroPlant => 100,
+    PlantType.windPlant => 125,
     PlantType.solarPlant => 150,
     PlantType.electricPlant => 200,
     PlantType.chemicalPlant => 300,
