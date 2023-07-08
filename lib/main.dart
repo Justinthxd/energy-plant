@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp.router(
         debugShowCheckedModeBanner: false,
-        title: 'Energy Builder',
+        title: 'Energy Builder 2',
         routerConfig: router,
         theme: AppTheme.getTheme(),
       ),
@@ -30,3 +30,4 @@ class MyApp extends StatelessWidget {
   // Adios
 }
 // Hola ----------------------
+// 
