@@ -1,13 +1,15 @@
 import 'package:energy_builder/data/constants/constants.dart';
-import 'package:energy_builder/data/models/level.dart';
+import 'package:energy_builder/design/provider/provider.dart';
 import 'package:energy_builder/design/widgets/levels_item.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class Levels extends StatelessWidget {
   const Levels({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final main = context.watch<MainProvider>();
     final size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Colors.black,
@@ -44,14 +46,10 @@ class Levels extends StatelessWidget {
                   mainAxisSpacing: 15,
                   crossAxisSpacing: 15,
                 ),
-                itemCount: 3,
+                itemCount: main.levels.length,
                 itemBuilder: (context, index) {
                   return LevelsItem(
-                    level: Level(
-                      id: 1,
-                      difficulty: 'Medium',
-                      push: '/level1',
-                    ),
+                    level: main.levels[index],
                   );
                 },
               ),
