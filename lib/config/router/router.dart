@@ -1,4 +1,4 @@
-import 'package:energy_builder/design/pages/opc_levels/levels_options.dart';
+import 'package:energy_builder/design/pages/levels.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../design/levels/level_1/level_1.dart';
@@ -15,7 +15,7 @@ final router = GoRouter(
     GoRoute(
       name: '/levelOpc',
       path: '/levelOpc',
-      builder: (context, state) => const LevelOptions(),
+      builder: (context, state) => const Levels(),
     ),
     GoRoute(
       name: '/level1',
