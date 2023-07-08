@@ -17,6 +17,8 @@ class OptionPanel extends StatelessWidget {
           PlantOption(type: PlantType.hydroPlant),
           PlantOption(type: PlantType.solarPlant),
           PlantOption(type: PlantType.electricPlant),
+          PlantOption(type: PlantType.chemicalPlant),
+          PlantOption(type: PlantType.nuclearPlant),
         ],
       ),
     );

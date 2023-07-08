@@ -20,20 +20,13 @@ class _Level1State extends State<Level1> {
     return Scaffold(
       backgroundColor: Colors.black,
       body: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors: [
-              Colors.green.withOpacity(0.2),
-              Colors.blue.withOpacity(0.2),
-            ],
-          ),
+        decoration: const BoxDecoration(
+          color: Color.fromARGB(255, 24, 27, 35),
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            const SizedBox(height: 50),
+            const SizedBox(height: 5),
             Panel(
               energy: provider.energy,
               targetEnergy: provider.targetEnergy,
@@ -47,7 +40,7 @@ class _Level1State extends State<Level1> {
                 padding: const EdgeInsets.all(15),
                 physics: const NeverScrollableScrollPhysics(),
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
+                  crossAxisCount: 3,
                   mainAxisSpacing: 15,
                   crossAxisSpacing: 15,
                 ),

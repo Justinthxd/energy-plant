@@ -39,12 +39,42 @@ class WidgetPlant extends StatelessWidget {
                 ),
                 child: Stack(
                   children: [
-                    Center(
-                      child: Icon(
-                        getIcon(plant.type),
-                        color: Colors.white,
-                        size: 60,
+                    Positioned(
+                      top: 0,
+                      right: 0,
+                      child: GestureDetector(
+                        onTap: () {},
+                        child: Container(
+                          height: 45,
+                          width: 45,
+                          decoration: const BoxDecoration(
+                            borderRadius: BorderRadius.only(
+                              bottomLeft: Radius.circular(15),
+                            ),
+                            color: Colors.black12,
+                          ),
+                          child: const Center(
+                            child: Icon(
+                              Icons.more_vert_rounded,
+                              size: 30,
+                              color: Colors.white60,
+                            ),
+                          ),
+                        ),
                       ),
+                    ),
+                    Center(
+                      child: plant.type == PlantType.nuclearPlant
+                          ? Image.asset(
+                              "assets/images/atomic.png",
+                              color: Colors.white,
+                              height: 65,
+                            )
+                          : Icon(
+                              getIcon(plant.type),
+                              color: Colors.white,
+                              size: 60,
+                            ),
                     ),
                   ],
                 ),

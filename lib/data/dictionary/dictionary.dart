@@ -13,11 +13,11 @@ IconData getIcon(PlantType type) {
 
 Color getColor(PlantType type) {
   return switch (type) {
-    PlantType.hydroPlant => const Color.fromARGB(255, 2, 121, 219),
-    PlantType.solarPlant => const Color.fromARGB(255, 207, 192, 59),
-    PlantType.electricPlant => Colors.orangeAccent,
+    PlantType.hydroPlant => const Color.fromARGB(255, 47, 145, 231),
+    PlantType.solarPlant => const Color.fromARGB(255, 249, 198, 71),
+    PlantType.electricPlant => const Color.fromARGB(255, 233, 64, 70),
     PlantType.chemicalPlant => Colors.purple,
-    PlantType.nuclearPlant => Colors.green,
+    PlantType.nuclearPlant => const Color.fromARGB(255, 3, 85, 5),
   };
 }
 
@@ -36,7 +36,7 @@ int getPrice(PlantType type) {
     PlantType.hydroPlant => 100,
     PlantType.solarPlant => 150,
     PlantType.electricPlant => 200,
-    PlantType.chemicalPlant => 250,
-    PlantType.nuclearPlant => 500,
+    PlantType.chemicalPlant => 300,
+    PlantType.nuclearPlant => 600,
   };
 }

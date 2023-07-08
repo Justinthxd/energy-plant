@@ -26,11 +26,11 @@ class PlantModel {
 
   int getEnergy() {
     return switch (type) {
-      PlantType.hydroPlant => 5,
-      PlantType.solarPlant => 7,
-      PlantType.electricPlant => 9,
-      PlantType.chemicalPlant => 11,
-      PlantType.nuclearPlant => 20,
+      PlantType.hydroPlant => 1,
+      PlantType.solarPlant => 3,
+      PlantType.electricPlant => 5,
+      PlantType.chemicalPlant => 14,
+      PlantType.nuclearPlant => 30,
     };
   }
 
@@ -39,8 +39,8 @@ class PlantModel {
       PlantType.hydroPlant => 100,
       PlantType.solarPlant => 150,
       PlantType.electricPlant => 200,
-      PlantType.chemicalPlant => 250,
-      PlantType.nuclearPlant => 500,
+      PlantType.chemicalPlant => 300,
+      PlantType.nuclearPlant => 600,
     };
   }
 

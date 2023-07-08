@@ -11,15 +11,8 @@ class Home extends StatelessWidget {
       backgroundColor: Colors.black,
       body: Container(
         width: size.width,
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors: [
-              Colors.green.withOpacity(0.2),
-              Colors.blue.withOpacity(0.2),
-            ],
-          ),
+        decoration: const BoxDecoration(
+          color: Color.fromARGB(255, 24, 27, 35),
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -27,7 +20,7 @@ class Home extends StatelessWidget {
             const Icon(
               Icons.bolt,
               size: 120,
-              color: Colors.lightGreenAccent,
+              color: Color.fromARGB(255, 4, 202, 11),
             ),
             const SizedBox(height: 20),
             const Text(
@@ -52,7 +45,7 @@ class Home extends StatelessWidget {
                 context.go('/level1');
               },
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.green,
+                backgroundColor: const Color.fromARGB(255, 2, 100, 5),
                 padding: const EdgeInsets.symmetric(
                   horizontal: 30,
                   vertical: 15,

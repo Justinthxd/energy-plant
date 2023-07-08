@@ -30,11 +30,17 @@ class PlantOption extends StatelessWidget {
         child: Column(
           children: [
             const Spacer(),
-            Icon(
-              getIcon(type),
-              size: 30,
-              color: getColor(type),
-            ),
+            type == PlantType.nuclearPlant
+                ? Image.asset(
+                    "assets/images/atomic.png",
+                    color: getColor(type),
+                    height: 30,
+                  )
+                : Icon(
+                    getIcon(type),
+                    size: 30,
+                    color: getColor(type),
+                  ),
             const Spacer(),
             Container(
               decoration: BoxDecoration(

@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 
 class Level1Provider extends ChangeNotifier {
   List<PlantModel> plants = [
-    for (int i = 0; i < 4; i++)
+    for (int i = 0; i < 9; i++)
       PlantModel(
         id: i,
       ),
@@ -18,7 +18,7 @@ class Level1Provider extends ChangeNotifier {
     notifyListeners();
   }
 
-  double money = 250;
+  double money = 100000;
 
   double get getMoney => money;
 
@@ -40,7 +40,7 @@ class Level1Provider extends ChangeNotifier {
 
   int energy = 0;
 
-  int targetEnergy = 600;
+  int targetEnergy = 1000;
 
   int get getEnergy => energy;
 
@@ -58,7 +58,7 @@ class Level1Provider extends ChangeNotifier {
 
   // - - - - - - - - - - - - - - - - - - - - //
 
-  int time = 60;
+  int time = 180;
 
   int get getTime => time;
 
@@ -72,10 +72,8 @@ class Level1Provider extends ChangeNotifier {
     int seconds = time;
 
     for (int i = 0; seconds > 59; i++) {
-      if (seconds > 59) {
-        minutes++;
-        seconds -= 60;
-      }
+      minutes++;
+      seconds -= 60;
     }
 
     return "${minutes.toString().padLeft(2, '0')}:${seconds.toString().padLeft(2, '0')}";
@@ -87,19 +85,19 @@ class Level1Provider extends ChangeNotifier {
 
   startTimer() {
     if (!plants.any((plant) => plant.isActive)) {
-      timer.cancel();
+      stopTimer();
       return;
     }
 
     if (!timer.isActive) {
       timer = Timer.periodic(const Duration(seconds: 1), (timer) {
         if (time <= 0) {
-          timer.cancel();
+          stopTimer();
         } else if (energy < targetEnergy) {
           logic();
           notifyListeners();
         } else {
-          timer.cancel();
+          stopTimer();
         }
       });
     }
@@ -112,10 +110,6 @@ class Level1Provider extends ChangeNotifier {
   // - - - - - - - - - - - - - - - - - - - - //
 
   void activatePlant(PlantModel plant) {
-    if (plant.isActive) {
-      return;
-    }
-
     final index = plants.indexWhere((element) => element.id == plant.id);
 
     plants[index] = plant.copyWith(
@@ -145,8 +139,6 @@ class Level1Provider extends ChangeNotifier {
     notifyListeners();
   }
 
-  void buyPlant(PlantModel plant) {}
-
   // - - - - - - - - - - - - - - - - - - - - //
 
   void logic() {
@@ -159,7 +151,7 @@ class Level1Provider extends ChangeNotifier {
       setEnergy = energy + activePlants[i].getEnergy();
       if (energy > targetEnergy) {
         setEnergy = targetEnergy;
-        // finished();
+        finished();
       }
     }
   }
