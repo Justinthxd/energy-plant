@@ -1,8 +1,4 @@
-import 'dart:ui';
-
 import 'package:energy_builder/data/constants/constants.dart';
-import 'package:energy_builder/data/dictionary/dictionary.dart';
-import 'package:energy_builder/data/models/level.dart';
 import 'package:energy_builder/design/provider/provider.dart';
 import 'package:energy_builder/design/widgets/levels_item.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +11,6 @@ class Levels extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final provider = context.watch<MainProvider>();
-    final size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: backgroundColor,
       body: Column(

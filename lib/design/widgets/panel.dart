@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../levels/level_1/provider.dart';
+import '../levels/provider/provider.dart';
 
 class Panel extends StatelessWidget {
   const Panel({
@@ -23,7 +23,7 @@ class Panel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final provider = context.watch<Level1Provider>();
+    final provider = context.watch<LevelProvider>();
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 15),
       child: Column(

@@ -2,7 +2,7 @@ import 'package:energy_builder/data/models/plant.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../data/dictionary/dictionary.dart';
-import '../levels/level_1/provider.dart';
+import '../levels/provider/provider.dart';
 
 class PlantOption extends StatelessWidget {
   const PlantOption({super.key, required this.type});
@@ -11,7 +11,7 @@ class PlantOption extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final provider = context.watch<Level1Provider>();
+    final provider = context.watch<LevelProvider>();
     return GestureDetector(
       onTap: () {
         provider.setCurrentPlantType = type;

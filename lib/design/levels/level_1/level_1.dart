@@ -1,5 +1,5 @@
 import 'package:energy_builder/data/constants/constants.dart';
-import 'package:energy_builder/design/levels/level_1/provider.dart';
+import 'package:energy_builder/design/levels/provider/provider.dart';
 import 'package:energy_builder/design/widgets/option_panel.dart';
 import 'package:energy_builder/design/widgets/panel.dart';
 import 'package:energy_builder/design/widgets/plant.dart';
@@ -17,7 +17,7 @@ class _Level1State extends State<Level1> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    final provider = context.watch<Level1Provider>();
+    final provider = context.watch<LevelProvider>();
     return Scaffold(
       backgroundColor: backgroundColor,
       body: Column(

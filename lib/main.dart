@@ -1,5 +1,5 @@
 import 'package:energy_builder/config/router/router.dart';
-import 'package:energy_builder/design/levels/level_1/provider.dart';
+import 'package:energy_builder/design/levels/provider/provider.dart';
 import 'package:energy_builder/design/provider/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(
-          create: (_) => Level1Provider(),
+          create: (_) => LevelProvider(),
         ),
         ChangeNotifierProvider(
           create: (_) => MainProvider(),

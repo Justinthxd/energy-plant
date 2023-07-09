@@ -3,13 +3,8 @@ import 'dart:async';
 import 'package:energy_builder/data/models/plant.dart';
 import 'package:flutter/material.dart';
 
-class Level1Provider extends ChangeNotifier {
-  List<PlantModel> plants = [
-    for (int i = 0; i < 4; i++)
-      PlantModel(
-        id: i,
-      ),
-  ];
+class LevelProvider extends ChangeNotifier {
+  List<PlantModel> plants = [];
 
   List<PlantModel> get getPlants => plants;
 
@@ -18,7 +13,7 @@ class Level1Provider extends ChangeNotifier {
     notifyListeners();
   }
 
-  double money = 9999;
+  double money = 0;
 
   double get getMoney => money;
 
@@ -40,7 +35,7 @@ class Level1Provider extends ChangeNotifier {
 
   int energy = 0;
 
-  int targetEnergy = 9999;
+  int targetEnergy = 1;
 
   int get getEnergy => energy;
 
@@ -58,7 +53,7 @@ class Level1Provider extends ChangeNotifier {
 
   // - - - - - - - - - - - - - - - - - - - - //
 
-  int time = 9999;
+  int time = 0;
 
   int get getTime => time;
 
