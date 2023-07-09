@@ -5,9 +5,9 @@ import 'package:energy_builder/data/models/level.dart';
 
 class MainProvider extends ChangeNotifier {
   List<Level> levels = [
-    Level(id: 0, difficulty: 'Easy', push: '/level1'),
-    Level(id: 1, difficulty: 'Mediun', push: ''),
-    Level(id: 2, difficulty: 'Hard', push: ''),
+    Level(id: 0, difficulty: Difficulty.easy, push: '/level1'),
+    Level(id: 1, difficulty: Difficulty.medium, push: '/level2'),
+    Level(id: 2, difficulty: Difficulty.hard, push: '/level3'),
   ];
 
   get getLevels => levels;

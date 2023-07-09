@@ -1,6 +1,8 @@
 import 'package:energy_builder/data/models/plant.dart';
 import 'package:flutter/material.dart';
 
+import '../models/level.dart';
+
 IconData getIcon(PlantType type) {
   return switch (type) {
     PlantType.hydroPlant => Icons.water_drop_rounded,
@@ -15,7 +17,7 @@ IconData getIcon(PlantType type) {
 Color getColor(PlantType type) {
   return switch (type) {
     PlantType.hydroPlant => const Color.fromARGB(255, 47, 145, 231),
-    PlantType.windPlant => const Color.fromARGB(255, 100, 100, 100),
+    PlantType.windPlant => const Color.fromARGB(255, 140, 140, 140),
     PlantType.solarPlant => const Color.fromARGB(255, 249, 198, 71),
     PlantType.electricPlant => const Color.fromARGB(255, 233, 64, 70),
     PlantType.chemicalPlant => Colors.purple,
@@ -42,5 +44,21 @@ int getPrice(PlantType type) {
     PlantType.electricPlant => 200,
     PlantType.chemicalPlant => 300,
     PlantType.nuclearPlant => 600,
+  };
+}
+
+Color getDifficultyColor(Difficulty difficulty) {
+  return switch (difficulty) {
+    Difficulty.easy => Colors.green,
+    Difficulty.medium => Colors.yellow,
+    Difficulty.hard => Colors.red,
+  };
+}
+
+String getDifficultyName(Difficulty difficulty) {
+  return switch (difficulty) {
+    Difficulty.easy => 'Easy',
+    Difficulty.medium => 'Medium',
+    Difficulty.hard => 'Hard',
   };
 }

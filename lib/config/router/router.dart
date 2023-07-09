@@ -13,8 +13,8 @@ final router = GoRouter(
       builder: (context, state) => const Home(),
     ),
     GoRoute(
-      name: '/levelOpc',
-      path: '/levelOpc',
+      name: '/levels',
+      path: '/levels',
       builder: (context, state) => const Levels(),
     ),
     GoRoute(

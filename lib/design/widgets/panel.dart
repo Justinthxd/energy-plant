@@ -33,24 +33,26 @@ class Panel extends StatelessWidget {
               const Text(
                 'Level 1',
                 style: TextStyle(
-                  color: Colors.white38,
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
+                  color: Colors.white24,
+                  fontSize: 25,
+                  fontWeight: FontWeight.w500,
                 ),
               ),
               const Spacer(),
               Text(
                 provider.getTimeFormatted(),
                 style: const TextStyle(
-                  color: Colors.white38,
-                  fontSize: 22,
-                  fontWeight: FontWeight.bold,
+                  color: Colors.white24,
+                  fontSize: 20,
+                  fontWeight: FontWeight.w500,
                 ),
               ),
               const SizedBox(width: 10),
-              const Icon(
-                Icons.pause,
-                color: Colors.white70,
+              Icon(
+                provider.getTimerIsRunning
+                    ? Icons.pause
+                    : Icons.play_arrow_rounded,
+                color: Colors.white54,
               ),
             ],
           ),
@@ -72,7 +74,7 @@ class Panel extends StatelessWidget {
               ),
               Text(
                 '/',
-                style: digitStyle,
+                style: digitStyle.copyWith(color: Colors.white60),
               ),
               Text(
                 '$targetEnergy',

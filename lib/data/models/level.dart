@@ -1,6 +1,8 @@
+enum Difficulty { easy, medium, hard }
+
 class Level {
   final int id;
-  final String difficulty;
+  final Difficulty difficulty;
   final String push;
 
   Level({

@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 
 class Level1Provider extends ChangeNotifier {
   List<PlantModel> plants = [
-    for (int i = 0; i < 9; i++)
+    for (int i = 0; i < 4; i++)
       PlantModel(
         id: i,
       ),
@@ -18,7 +18,7 @@ class Level1Provider extends ChangeNotifier {
     notifyListeners();
   }
 
-  double money = 100000;
+  double money = 9999;
 
   double get getMoney => money;
 
@@ -40,7 +40,7 @@ class Level1Provider extends ChangeNotifier {
 
   int energy = 0;
 
-  int targetEnergy = 1000;
+  int targetEnergy = 9999;
 
   int get getEnergy => energy;
 
@@ -58,7 +58,7 @@ class Level1Provider extends ChangeNotifier {
 
   // - - - - - - - - - - - - - - - - - - - - //
 
-  int time = 180;
+  int time = 9999;
 
   int get getTime => time;
 
@@ -81,6 +81,15 @@ class Level1Provider extends ChangeNotifier {
 
   // - - - - - - - - - - - - - - - - - - - - //
 
+  bool timerIsRunning = false;
+
+  bool get getTimerIsRunning => timerIsRunning;
+
+  set setTimerIsRunning(bool timerIsRunning) {
+    this.timerIsRunning = timerIsRunning;
+    notifyListeners();
+  }
+
   Timer timer = Timer(Duration.zero, () {});
 
   startTimer() {
@@ -90,6 +99,7 @@ class Level1Provider extends ChangeNotifier {
     }
 
     if (!timer.isActive) {
+      timerIsRunning = true;
       timer = Timer.periodic(const Duration(seconds: 1), (timer) {
         if (time <= 0) {
           stopTimer();
@@ -105,6 +115,7 @@ class Level1Provider extends ChangeNotifier {
 
   stopTimer() {
     timer.cancel();
+    timerIsRunning = false;
   }
 
   // - - - - - - - - - - - - - - - - - - - - //
