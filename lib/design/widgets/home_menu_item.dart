@@ -2,13 +2,11 @@
 import 'package:flutter/material.dart';
 
 class MenuButton extends StatelessWidget {
-  const MenuButton(
-      {Key? key, required this.icon, required this.index, required this.notify})
+  const MenuButton({Key? key, required this.icon, required this.index})
       : super(key: key);
 
   final IconData icon;
   final int index;
-  final bool notify;
 
   @override
   Widget build(BuildContext context) {
@@ -30,11 +28,11 @@ class MenuButton extends StatelessWidget {
           child: Icon(
             icon,
             size: 27,
-            color: Colors.white70,
+            color: Colors.white,
           ),
         ),
       ),
-      onTap: () async {},
+      onTap: () {},
     );
   }
 }

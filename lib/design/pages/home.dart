@@ -91,11 +91,11 @@ class Home extends StatelessWidget {
                         MenuButton(
                           icon: icons[i],
                           index: i,
-                          notify: false,
                         ),
                     ],
                   ),
                 ),
+                const SizedBox(height: 20),
               ],
             ),
           ),

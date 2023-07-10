@@ -36,17 +36,19 @@ class LevelsItem extends StatelessWidget {
         'Level ${level.id + 1}',
         style: const TextStyle(
           color: Colors.white,
-          fontSize: 17,
+          fontSize: 22,
+          fontWeight: FontWeight.bold,
         ),
       ),
       subtitle: Text(
         getDifficultyName(level.difficulty),
         style: const TextStyle(
-          color: Colors.white60,
+          color: Colors.white70,
         ),
       ),
       leading: Icon(
         Icons.bolt,
+        size: 30,
         color: getDifficultyColor(level.difficulty),
       ),
       trailing: const Icon(

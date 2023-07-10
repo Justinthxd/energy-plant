@@ -41,7 +41,7 @@ class Levels extends StatelessWidget {
           ),
           Expanded(
             child: ListView.separated(
-              padding: EdgeInsets.zero,
+              padding: const EdgeInsets.symmetric(vertical: 20),
               physics: const BouncingScrollPhysics(),
               separatorBuilder: (context, index) {
                 return Padding(

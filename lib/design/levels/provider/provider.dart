@@ -22,15 +22,6 @@ class LevelProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  PlantType currentPlantType = PlantType.hydroPlant;
-
-  PlantType get getCurrentPlantType => currentPlantType;
-
-  set setCurrentPlantType(PlantType currentPlantType) {
-    this.currentPlantType = currentPlantType;
-    notifyListeners();
-  }
-
   // - - - - - - - - - - - - - - - - - - - - //
 
   int energy = 0;
@@ -115,11 +106,15 @@ class LevelProvider extends ChangeNotifier {
 
   // - - - - - - - - - - - - - - - - - - - - //
 
-  void activatePlant(PlantModel plant) {
+  void activatePlant(PlantModel plant, PlantType type) {
+    if (plant.isActive) {
+      return;
+    }
+
     final index = plants.indexWhere((element) => element.id == plant.id);
 
     plants[index] = plant.copyWith(
-      type: currentPlantType,
+      type: type,
     );
 
     // Price - - - - - - - //
@@ -138,7 +133,7 @@ class LevelProvider extends ChangeNotifier {
 
     plants[index] = plant.copyWith(
       isActive: true,
-      type: currentPlantType,
+      type: type,
     );
 
     startTimer();
