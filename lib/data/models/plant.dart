@@ -11,6 +11,7 @@ enum PlantType {
 class PlantModel {
   final int id;
   final bool isActive;
+  final bool isReady;
   final PlantType type;
   final int price;
   final int energy;
@@ -19,6 +20,7 @@ class PlantModel {
   const PlantModel({
     this.id = 0,
     this.isActive = false,
+    this.isReady = false,
     this.type = PlantType.hydroPlant,
     this.price = 0,
     this.energy = 0,
@@ -61,6 +63,7 @@ class PlantModel {
   PlantModel copyWith({
     int? id,
     bool? isActive,
+    bool? isReady,
     PlantType? type,
     int? price,
     int? energy,
@@ -69,6 +72,7 @@ class PlantModel {
     return PlantModel(
       id: id ?? this.id,
       isActive: isActive ?? this.isActive,
+      isReady: isReady ?? this.isReady,
       type: type ?? this.type,
       price: price ?? this.price,
       energy: energy ?? this.energy,

@@ -21,15 +21,41 @@ class PlantSelectorItem extends StatelessWidget {
     final provider = context.watch<LevelProvider>();
     return Container(
       padding: const EdgeInsets.all(5),
-      child: IconButton(
-        onPressed: () {
-          provider.activatePlant(plant, type);
-        },
-        icon: Icon(
-          getIcon(type),
-          size: 40,
-          color: getColor(type),
-        ),
+      child: Column(
+        children: [
+          IconButton(
+            onPressed: () {
+              provider.activatePlant(plant, type);
+            },
+            icon: Icon(
+              getIcon(type),
+              size: 40,
+              color: getColor(type),
+            ),
+          ),
+          Container(
+              decoration: BoxDecoration(
+                color: Colors.black.withOpacity(0.6),
+                borderRadius: BorderRadius.circular(15),
+              ),
+              child: Row(
+                children: [
+                  const Icon(
+                    Icons.attach_money_rounded,
+                    size: 12,
+                    color: Colors.green,
+                  ),
+                  const SizedBox(width: 5),
+                  Text(
+                    getPrice(type).toString(),
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 12,
+                    ),
+                  ),
+                ],
+              )),
+        ],
       ),
     );
   }

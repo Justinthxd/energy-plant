@@ -3,7 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 Color backgroundColor = const Color.fromARGB(255, 15, 15, 15);
 
-List icons = [
+List<IconData> icons = [
   Icons.shopping_cart_rounded,
   FontAwesomeIcons.award,
   Icons.leaderboard_rounded,

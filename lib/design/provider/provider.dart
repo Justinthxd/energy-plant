@@ -40,4 +40,13 @@ class MainProvider extends ChangeNotifier {
     this.levels = levels;
     notifyListeners();
   }
+
+  String test = 'test';
+
+  String get getTest => test;
+
+  set setTest(String test) {
+    this.test = test;
+    notifyListeners();
+  }
 }

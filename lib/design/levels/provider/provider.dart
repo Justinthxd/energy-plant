@@ -136,7 +136,27 @@ class LevelProvider extends ChangeNotifier {
       type: type,
     );
 
-    startTimer();
+    // startTimer();
+    notifyListeners();
+  }
+
+  setPlantReady(PlantModel plant) {
+    final index = plants.indexWhere((element) => element.id == plant.id);
+
+    plants[index] = plant.copyWith(
+      isReady: true,
+    );
+
+    notifyListeners();
+  }
+
+  setPlantNotReady(PlantModel plant) {
+    final index = plants.indexWhere((element) => element.id == plant.id);
+
+    plants[index] = plant.copyWith(
+      isReady: false,
+    );
+
     notifyListeners();
   }
 
