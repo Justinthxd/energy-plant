@@ -15,7 +15,7 @@ class PlantModel {
   final PlantType type;
   final int price;
   final int energy;
-  final double duration;
+  final int duration;
 
   const PlantModel({
     this.id = 0,
@@ -24,7 +24,7 @@ class PlantModel {
     this.type = PlantType.hydroPlant,
     this.price = 0,
     this.energy = 0,
-    this.duration = 0.0,
+    this.duration = 0,
   });
 
   int getEnergy() {
@@ -60,6 +60,17 @@ class PlantModel {
     };
   }
 
+  int getTime() {
+    return switch (type) {
+      PlantType.hydroPlant => 5,
+      PlantType.windPlant => 10,
+      PlantType.solarPlant => 15,
+      PlantType.electricPlant => 20,
+      PlantType.chemicalPlant => 25,
+      PlantType.nuclearPlant => 30,
+    };
+  }
+
   PlantModel copyWith({
     int? id,
     bool? isActive,
@@ -67,7 +78,7 @@ class PlantModel {
     PlantType? type,
     int? price,
     int? energy,
-    double? duration,
+    int? duration,
   }) {
     return PlantModel(
       id: id ?? this.id,

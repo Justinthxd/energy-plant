@@ -1,10 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 import 'package:energy_builder/data/dictionary/dictionary.dart';
 import 'package:energy_builder/data/models/plant.dart';
-import 'package:energy_builder/design/levels/provider/provider.dart';
 
 class PlantSelectorItem extends StatelessWidget {
   const PlantSelectorItem({
@@ -18,15 +16,12 @@ class PlantSelectorItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final provider = context.watch<LevelProvider>();
     return Container(
-      padding: const EdgeInsets.all(5),
+      padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 15),
       child: Column(
         children: [
           IconButton(
-            onPressed: () {
-              provider.activatePlant(plant, type);
-            },
+            onPressed: () {},
             icon: Icon(
               getIcon(type),
               size: 40,
@@ -45,7 +40,6 @@ class PlantSelectorItem extends StatelessWidget {
                     size: 12,
                     color: Colors.green,
                   ),
-                  const SizedBox(width: 5),
                   Text(
                     getPrice(type).toString(),
                     style: const TextStyle(

@@ -25,7 +25,7 @@ class Home extends StatelessWidget {
               height: 200,
               width: 200,
               decoration: BoxDecoration(
-                color: const Color.fromARGB(255, 0, 159, 5).withOpacity(0.05),
+                color: const Color.fromARGB(255, 0, 159, 5).withOpacity(0.03),
                 shape: BoxShape.circle,
               ),
             ),
@@ -37,7 +37,7 @@ class Home extends StatelessWidget {
               height: 300,
               width: 300,
               decoration: BoxDecoration(
-                color: const Color.fromARGB(255, 0, 159, 5).withOpacity(0.05),
+                color: const Color.fromARGB(255, 0, 159, 5).withOpacity(0.03),
                 shape: BoxShape.circle,
               ),
             ),

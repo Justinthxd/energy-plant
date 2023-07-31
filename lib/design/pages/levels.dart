@@ -1,16 +1,14 @@
 import 'package:energy_builder/data/constants/constants.dart';
-import 'package:energy_builder/design/provider/provider.dart';
+import 'package:energy_builder/data/models/level.dart';
 import 'package:energy_builder/design/widgets/levels_item.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:provider/provider.dart';
 
 class Levels extends StatelessWidget {
   const Levels({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final provider = context.watch<MainProvider>();
     return Scaffold(
       backgroundColor: backgroundColor,
       body: Column(
@@ -51,10 +49,19 @@ class Levels extends StatelessWidget {
                   ),
                 );
               },
-              itemCount: provider.levels.length,
+              itemCount: 1,
               itemBuilder: (BuildContext context, int index) {
-                final level = provider.levels[index];
-                return LevelsItem(level: level);
+                return LevelsItem(
+                  level: Level(
+                    id: 0,
+                    difficulty: Difficulty.easy,
+                    push: '/level1',
+                    money: 300,
+                    targetEnergy: 300,
+                    time: 120,
+                    plants: 9,
+                  ),
+                );
               },
             ),
           ),

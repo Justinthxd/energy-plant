@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-
-import '../../levels/provider/provider.dart';
 
 class Panel extends StatelessWidget {
   const Panel({
@@ -23,38 +20,20 @@ class Panel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final provider = context.watch<LevelProvider>();
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 15),
       child: Column(
         children: [
-          Row(
-            children: [
-              const Text(
-                'Level 1',
-                style: TextStyle(
-                  color: Colors.white24,
-                  fontSize: 25,
-                  fontWeight: FontWeight.w500,
-                ),
+          const Align(
+            alignment: Alignment.centerLeft,
+            child: Text(
+              'Level 1',
+              style: TextStyle(
+                color: Colors.white24,
+                fontSize: 25,
+                fontWeight: FontWeight.w500,
               ),
-              const Spacer(),
-              Text(
-                provider.getTimeFormatted(),
-                style: const TextStyle(
-                  color: Colors.white24,
-                  fontSize: 20,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-              const SizedBox(width: 10),
-              Icon(
-                provider.getTimerIsRunning
-                    ? Icons.pause
-                    : Icons.play_arrow_rounded,
-                color: Colors.white54,
-              ),
-            ],
+            ),
           ),
           Divider(
             height: 5,

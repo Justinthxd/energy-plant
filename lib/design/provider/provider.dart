@@ -7,11 +7,11 @@ class MainProvider extends ChangeNotifier {
   List<Level> levels = [
     Level(
       id: 0,
-      plants: 4,
+      plants: 9,
       difficulty: Difficulty.easy,
       push: '/level1',
-      money: 1000,
-      targetEnergy: 600,
+      money: 500,
+      targetEnergy: 100,
       time: 120,
     ),
     Level(
