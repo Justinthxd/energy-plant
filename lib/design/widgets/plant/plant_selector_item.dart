@@ -1,8 +1,9 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:energy_builder/bloc/level_bloc/level_bloc.dart';
 import 'package:flutter/material.dart';
 
 import 'package:energy_builder/data/dictionary/dictionary.dart';
 import 'package:energy_builder/data/models/plant.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class PlantSelectorItem extends StatelessWidget {
   const PlantSelectorItem({
@@ -21,7 +22,9 @@ class PlantSelectorItem extends StatelessWidget {
       child: Column(
         children: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              context.read<LevelBloc>().add(ActivatePlantEvent(plant.id, type));
+            },
             icon: Icon(
               getIcon(type),
               size: 40,
@@ -29,26 +32,27 @@ class PlantSelectorItem extends StatelessWidget {
             ),
           ),
           Container(
-              decoration: BoxDecoration(
-                color: Colors.black.withOpacity(0.6),
-                borderRadius: BorderRadius.circular(15),
-              ),
-              child: Row(
-                children: [
-                  const Icon(
-                    Icons.attach_money_rounded,
-                    size: 12,
-                    color: Colors.green,
+            decoration: BoxDecoration(
+              color: Colors.black.withOpacity(0.6),
+              borderRadius: BorderRadius.circular(15),
+            ),
+            child: Row(
+              children: [
+                const Icon(
+                  Icons.attach_money_rounded,
+                  size: 12,
+                  color: Colors.green,
+                ),
+                Text(
+                  getPrice(type).toString(),
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 12,
                   ),
-                  Text(
-                    getPrice(type).toString(),
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 12,
-                    ),
-                  ),
-                ],
-              )),
+                ),
+              ],
+            ),
+          ),
         ],
       ),
     );

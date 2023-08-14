@@ -1,6 +1,5 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:energy_builder/bloc/level_bloc/level_bloc.dart';
-import 'package:energy_builder/data/models/plant.dart';
+import 'package:energy_builder/design/widgets/panels/panel.dart';
 import 'package:flutter/material.dart';
 
 import 'package:energy_builder/data/constants/constants.dart';
@@ -20,48 +19,49 @@ class _Level1State extends State<Level1> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    return BlocListener<LevelBloc, LevelState>(
-      listener: (context, state) {},
-      child: BlocBuilder<LevelBloc, LevelState>(
+    return Scaffold(
+      backgroundColor: backgroundColor,
+      body: BlocConsumer<LevelBloc, LevelState>(
+        listener: (context, state) {},
         builder: (context, state) {
-          return Scaffold(
-            backgroundColor: backgroundColor,
-            body: Column(
-              children: [
-                const SizedBox(height: 50),
-                // Panel(
-                //   energy: provider.energy,
-                //   targetEnergy: provider.targetEnergy,
-                //   money: provider.money,
-                // ),
-                const SizedBox(height: 20),
-                Expanded(
-                  child: Center(
-                    child: Container(
-                      height: size.height * 0.5,
-                      decoration: const BoxDecoration(),
-                      child: GridView.builder(
-                        padding: const EdgeInsets.all(15),
-                        physics: const NeverScrollableScrollPhysics(),
-                        gridDelegate:
-                            const SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 3,
-                          mainAxisSpacing: 15,
-                          crossAxisSpacing: 15,
-                        ),
-                        itemCount: 9,
-                        itemBuilder: (context, index) {
-                          return const Square(plant: PlantModel());
-                        },
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          );
+          if (state is LevelLoadedState) {
+            return _levelBody(size);
+          }
+          return const SizedBox();
         },
       ),
+    );
+  }
+
+  Column _levelBody(Size size) {
+    final state = context.read<LevelBloc>().state as LevelLoadedState;
+    return Column(
+      children: [
+        const SizedBox(height: 50),
+        const Panel(),
+        const SizedBox(height: 20),
+        Expanded(
+          child: Center(
+            child: Container(
+              height: size.height * 0.5,
+              decoration: const BoxDecoration(),
+              child: GridView.builder(
+                padding: const EdgeInsets.all(15),
+                physics: const NeverScrollableScrollPhysics(),
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 3,
+                  mainAxisSpacing: 15,
+                  crossAxisSpacing: 15,
+                ),
+                itemCount: state.level.plants.length,
+                itemBuilder: (context, index) {
+                  return Square(id: index, level: state.level);
+                },
+              ),
+            ),
+          ),
+        ),
+      ],
     );
   }
 }

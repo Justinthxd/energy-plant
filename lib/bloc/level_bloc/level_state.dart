@@ -1,20 +1,12 @@
 part of 'level_bloc.dart';
 
 @immutable
-abstract class LevelState {}
+sealed class LevelState {}
 
-class LevelInitialState extends LevelState {}
+final class LevelInitialState extends LevelState {}
 
-class LevelLoadingState extends LevelState {}
+final class LevelLoadedState extends LevelState {
+  final Level level;
 
-class LevelStartState extends LevelState {}
-
-class LevelRunningState extends LevelState {}
-
-class LevelErrorState extends LevelState {
-  final String message;
-
-  LevelErrorState(this.message);
+  LevelLoadedState(this.level);
 }
-
-class LevelFinishedState extends LevelState {}

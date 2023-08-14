@@ -1,8 +1,10 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:energy_builder/bloc/level_bloc/level_bloc.dart';
 import 'package:energy_builder/data/dictionary/dictionary.dart';
 import 'package:flutter/material.dart';
 
 import 'package:energy_builder/data/models/level.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 class LevelsItem extends StatelessWidget {
@@ -18,7 +20,8 @@ class LevelsItem extends StatelessWidget {
     return ListTile(
       splashColor: getDifficultyColor(level.difficulty).withOpacity(0.06),
       onTap: () {
-        context.pushNamed(level.push);
+        context.read<LevelBloc>().add(LevelLoadedEvent(level));
+        context.pushNamed(level.route);
       },
       title: Text(
         'Level ${level.id + 1}',

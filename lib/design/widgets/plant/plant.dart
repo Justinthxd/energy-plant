@@ -1,9 +1,13 @@
+import 'dart:async';
+
 import 'package:custom_pop_up_menu/custom_pop_up_menu.dart';
+import 'package:energy_builder/bloc/level_bloc/level_bloc.dart';
 import 'package:energy_builder/design/widgets/plant/options_selector.dart';
 import 'package:flutter/material.dart';
 
 import 'package:energy_builder/data/dictionary/dictionary.dart';
 import 'package:energy_builder/data/models/plant.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class WidgetPlant extends StatefulWidget {
   const WidgetPlant({
@@ -31,6 +35,23 @@ class _WidgetPlantState extends State<WidgetPlant>
       duration: Duration(seconds: widget.plant.getTime()),
     );
     animationController.forward();
+    Timer(Duration(seconds: widget.plant.getTime()), () {
+      context.read<LevelBloc>().add(PlantIsReadyEvent(widget.plant.id));
+      setState(() {});
+    });
+  }
+
+  _recolectPlant() {
+    context.read<LevelBloc>().add(PlantIsNotReadyEvent(widget.plant.id));
+    context.read<LevelBloc>().add(AddMoneyEvent(widget.plant.getEarning()));
+    context.read<LevelBloc>().add(AddEnergyEvent(widget.plant.getEnergy()));
+
+    Timer(Duration(seconds: widget.plant.getTime()), () {
+      context.read<LevelBloc>().add(PlantIsReadyEvent(widget.plant.id));
+      setState(() {});
+    });
+    animationController.reset();
+    animationController.forward();
   }
 
   @override
@@ -47,7 +68,11 @@ class _WidgetPlantState extends State<WidgetPlant>
       controller: controller,
       menuBuilder: () => optionsSelector(),
       child: GestureDetector(
-        onTap: widget.plant.isReady ? () {} : null,
+        onTap: widget.plant.isReady
+            ? () {
+                _recolectPlant();
+              }
+            : null,
         child: Container(
           decoration: BoxDecoration(
             color: widget.plant.isReady
