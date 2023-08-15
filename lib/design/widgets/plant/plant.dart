@@ -87,8 +87,7 @@ class _WidgetPlantState extends State<WidgetPlant>
               ),
             ],
           ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          child: Stack(
             children: [
               Center(
                 child: widget.plant.type == PlantType.nuclearPlant
@@ -103,19 +102,27 @@ class _WidgetPlantState extends State<WidgetPlant>
                         size: 60,
                       ),
               ),
-              Container(
-                margin: const EdgeInsets.symmetric(horizontal: 20),
-                child: AnimatedBuilder(
-                  animation: animationController,
-                  builder: (context, child) {
-                    return LinearProgressIndicator(
-                      color: Colors.white24,
-                      backgroundColor: Colors.transparent,
-                      value: animationController.value,
-                    );
-                  },
-                ),
-              ),
+              !widget.plant.isReady
+                  ? Column(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Container(
+                          margin: const EdgeInsets.symmetric(
+                              horizontal: 10, vertical: 10),
+                          child: AnimatedBuilder(
+                            animation: animationController,
+                            builder: (context, child) {
+                              return LinearProgressIndicator(
+                                color: Colors.white24,
+                                backgroundColor: Colors.transparent,
+                                value: animationController.value,
+                              );
+                            },
+                          ),
+                        ),
+                      ],
+                    )
+                  : const SizedBox(),
             ],
           ),
         ),

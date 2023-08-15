@@ -10,3 +10,7 @@ final class LevelLoadedState extends LevelState {
 
   LevelLoadedState(this.level);
 }
+
+final class LevelFinishedState extends LevelState {
+  LevelFinishedState();
+}

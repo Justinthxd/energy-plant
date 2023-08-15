@@ -26,6 +26,17 @@ class _Level1State extends State<Level1> {
         builder: (context, state) {
           if (state is LevelLoadedState) {
             return _levelBody(size);
+          } else if (state is LevelFinishedState) {
+            return const Center(
+              child: Text(
+                'Level Finished',
+                style: TextStyle(
+                  fontSize: 30,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white30,
+                ),
+              ),
+            );
           }
           return const SizedBox();
         },

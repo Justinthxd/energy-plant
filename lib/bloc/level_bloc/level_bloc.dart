@@ -13,6 +13,7 @@ class LevelBloc extends Bloc<LevelEvent, LevelState> {
         emit(LevelLoadedState(event.level));
       } else if (event is ActivatePlantEvent) {
         final currentState = state as LevelLoadedState;
+
         final updatedLevel = currentState.level.copyWith(
           plants: currentState.level.plants.map((plant) {
             if (plant.id == event.id) {
@@ -22,7 +23,17 @@ class LevelBloc extends Bloc<LevelEvent, LevelState> {
             }
           }).toList(),
         );
-        emit(LevelLoadedState(updatedLevel));
+
+        final PlantModel plant =
+            updatedLevel.plants.firstWhere((element) => element.id == event.id);
+
+        final updatedMoneyLevel = updatedLevel.copyWith(
+          money: updatedLevel.money - plant.getPrice(),
+        );
+
+        if (updatedMoneyLevel.money > 0) {
+          emit(LevelLoadedState(updatedMoneyLevel));
+        }
       } else if (event is PlantIsReadyEvent) {
         final currentState = state as LevelLoadedState;
         final updatedLevel = currentState.level.copyWith(
@@ -64,7 +75,12 @@ class LevelBloc extends Bloc<LevelEvent, LevelState> {
         final updatedLevel = currentState.level.copyWith(
           currentenergy: currentState.level.currentenergy + event.energy,
         );
-        emit(LevelLoadedState(updatedLevel));
+
+        if (updatedLevel.currentenergy < updatedLevel.targetEnergy) {
+          emit(LevelLoadedState(updatedLevel));
+        } else {
+          emit(LevelFinishedState());
+        }
       } else if (event is RemoveEnergyEvent) {
         final currentState = state as LevelLoadedState;
         final updatedLevel = currentState.level.copyWith(
