@@ -36,8 +36,10 @@ class _WidgetPlantState extends State<WidgetPlant>
     );
     animationController.forward();
     Timer(Duration(seconds: widget.plant.getTime()), () {
-      context.read<LevelBloc>().add(PlantIsReadyEvent(widget.plant.id));
-      setState(() {});
+      if (mounted) {
+        context.read<LevelBloc>().add(PlantIsReadyEvent(widget.plant.id));
+        setState(() {});
+      }
     });
   }
 
@@ -47,8 +49,10 @@ class _WidgetPlantState extends State<WidgetPlant>
     context.read<LevelBloc>().add(AddEnergyEvent(widget.plant.getEnergy()));
 
     Timer(Duration(seconds: widget.plant.getTime()), () {
-      context.read<LevelBloc>().add(PlantIsReadyEvent(widget.plant.id));
-      setState(() {});
+      if (mounted) {
+        context.read<LevelBloc>().add(PlantIsReadyEvent(widget.plant.id));
+        setState(() {});
+      }
     });
     animationController.reset();
     animationController.forward();
@@ -66,26 +70,29 @@ class _WidgetPlantState extends State<WidgetPlant>
       pressType: PressType.singleClick,
       enablePassEvent: true,
       controller: controller,
-      menuBuilder: () => optionsSelector(),
+      menuBuilder: () => OptionSelector(plant: widget.plant),
       child: GestureDetector(
         onTap: widget.plant.isReady
             ? () {
                 _recolectPlant();
               }
             : null,
-        child: Container(
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 250),
+          curve: Curves.linear,
+          clipBehavior: Clip.antiAlias,
           decoration: BoxDecoration(
             color: widget.plant.isReady
                 ? getColor(widget.plant.type)
-                : getColor(widget.plant.type).withOpacity(0.6),
+                : getColor(widget.plant.type).withOpacity(0.4),
             borderRadius: BorderRadius.circular(10),
-            boxShadow: [
-              BoxShadow(
-                blurRadius: 10,
-                color: widget.plant.isReady ? Colors.white30 : Colors.black38,
-                offset: const Offset(0, 0),
-              ),
-            ],
+            // boxShadow: [
+            // BoxShadow(
+            //   blurRadius: 10,
+            //   color: widget.plant.isReady ? Colors.white30 : Colors.black38,
+            //   offset: const Offset(0, 0),
+            // ),
+            // ],
           ),
           child: Stack(
             children: [
@@ -102,27 +109,39 @@ class _WidgetPlantState extends State<WidgetPlant>
                         size: 60,
                       ),
               ),
-              !widget.plant.isReady
-                  ? Column(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        Container(
-                          margin: const EdgeInsets.symmetric(
-                              horizontal: 10, vertical: 10),
-                          child: AnimatedBuilder(
-                            animation: animationController,
-                            builder: (context, child) {
-                              return LinearProgressIndicator(
-                                color: Colors.white24,
-                                backgroundColor: Colors.transparent,
-                                value: animationController.value,
-                              );
-                            },
-                          ),
-                        ),
-                      ],
-                    )
-                  : const SizedBox(),
+              Positioned.fill(
+                child: AnimatedBuilder(
+                  animation: animationController,
+                  builder: (context, child) {
+                    return LinearProgressIndicator(
+                      color: Colors.white12,
+                      backgroundColor: Colors.transparent,
+                      value: animationController.value,
+                    );
+                  },
+                ),
+              ),
+              // !widget.plant.isReady
+              //     ? Column(
+              //         mainAxisAlignment: MainAxisAlignment.end,
+              //         children: [
+              //           Container(
+              //             margin: const EdgeInsets.symmetric(
+              //                 horizontal: 10, vertical: 10),
+              //             child: AnimatedBuilder(
+              //               animation: animationController,
+              //               builder: (context, child) {
+              //                 return LinearProgressIndicator(
+              //                   color: Colors.white30,
+              //                   backgroundColor: Colors.transparent,
+              //                   value: animationController.value,
+              //                 );
+              //               },
+              //             ),
+              //           ),
+              //         ],
+              //       )
+              //     : const SizedBox(),
             ],
           ),
         ),

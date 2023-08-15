@@ -1,4 +1,5 @@
 import 'package:energy_builder/data/models/plant.dart';
+import 'package:energy_builder/utils/keys.dart';
 import 'package:flutter/material.dart';
 
 import '../models/level.dart';
@@ -16,9 +17,9 @@ IconData getIcon(PlantType type) {
 
 Color getColor(PlantType type) {
   return switch (type) {
-    PlantType.hydroPlant => const Color.fromARGB(255, 47, 145, 231),
-    PlantType.windPlant => const Color.fromARGB(255, 140, 140, 140),
-    PlantType.solarPlant => const Color.fromARGB(255, 249, 198, 71),
+    PlantType.hydroPlant => const Color.fromARGB(255, 0, 106, 199),
+    PlantType.windPlant => const Color.fromARGB(255, 90, 90, 90),
+    PlantType.solarPlant => const Color.fromARGB(255, 219, 158, 4),
     PlantType.electricPlant => const Color.fromARGB(255, 233, 64, 70),
     PlantType.chemicalPlant => Colors.purple,
     PlantType.nuclearPlant => const Color.fromARGB(255, 3, 85, 5),
@@ -38,12 +39,12 @@ String getName(PlantType type) {
 
 int getPrice(PlantType type) {
   return switch (type) {
-    PlantType.hydroPlant => 100,
-    PlantType.windPlant => 125,
-    PlantType.solarPlant => 150,
-    PlantType.electricPlant => 200,
-    PlantType.chemicalPlant => 300,
-    PlantType.nuclearPlant => 600,
+    PlantType.hydroPlant => PlantPriceKeys.hydroPlant,
+    PlantType.windPlant => PlantPriceKeys.windPlant,
+    PlantType.solarPlant => PlantPriceKeys.solarPlant,
+    PlantType.electricPlant => PlantPriceKeys.electricPlant,
+    PlantType.chemicalPlant => PlantPriceKeys.chemicalPlant,
+    PlantType.nuclearPlant => PlantPriceKeys.nuclearPlant,
   };
 }
 

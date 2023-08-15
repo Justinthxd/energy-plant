@@ -9,3 +9,5 @@ List<IconData> icons = [
   Icons.leaderboard_rounded,
   Icons.settings_rounded,
 ];
+
+int electricPlantPrice = 100;

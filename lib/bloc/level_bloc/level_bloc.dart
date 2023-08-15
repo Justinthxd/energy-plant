@@ -31,9 +31,30 @@ class LevelBloc extends Bloc<LevelEvent, LevelState> {
           money: updatedLevel.money - plant.getPrice(),
         );
 
-        if (updatedMoneyLevel.money > 0) {
+        if (updatedMoneyLevel.money >= 0) {
           emit(LevelLoadedState(updatedMoneyLevel));
         }
+      } else if (event is SellPlantEvent) {
+        final currentState = state as LevelLoadedState;
+
+        final updatedLevel = currentState.level.copyWith(
+          plants: currentState.level.plants.map((plant) {
+            if (plant.id == event.id) {
+              return plant.copyWith(isActive: false);
+            } else {
+              return plant;
+            }
+          }).toList(),
+        );
+
+        final PlantModel plant =
+            updatedLevel.plants.firstWhere((element) => element.id == event.id);
+
+        final updatedMoneyLevel = updatedLevel.copyWith(
+          money: updatedLevel.money + (plant.getPrice() * 0.7),
+        );
+
+        emit(LevelLoadedState(updatedMoneyLevel));
       } else if (event is PlantIsReadyEvent) {
         final currentState = state as LevelLoadedState;
         final updatedLevel = currentState.level.copyWith(

@@ -16,6 +16,12 @@ class ActivatePlantEvent extends LevelEvent {
   ActivatePlantEvent(this.id, this.type);
 }
 
+class SellPlantEvent extends LevelEvent {
+  final int id;
+
+  SellPlantEvent(this.id);
+}
+
 class PlantIsReadyEvent extends LevelEvent {
   final int id;
 

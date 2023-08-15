@@ -17,43 +17,58 @@ class PlantSelectorItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 15),
-      child: Column(
-        children: [
-          IconButton(
-            onPressed: () {
-              context.read<LevelBloc>().add(ActivatePlantEvent(plant.id, type));
-            },
-            icon: Icon(
-              getIcon(type),
-              size: 40,
-              color: getColor(type),
+    return InkWell(
+      borderRadius: BorderRadius.circular(50),
+      onTap: () {
+        context.read<LevelBloc>().add(ActivatePlantEvent(plant.id, type));
+      },
+      child: Container(
+        padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 15),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Container(
+              padding: const EdgeInsets.all(10),
+              child: type == PlantType.nuclearPlant
+                  ? Image.asset(
+                      "assets/images/atomic.png",
+                      color: getColor(type),
+                      height: 30,
+                    )
+                  : Icon(
+                      getIcon(type),
+                      color: type == PlantType.windPlant
+                          ? Colors.white
+                          : getColor(type),
+                      size: 35,
+                    ),
             ),
-          ),
-          Container(
-            decoration: BoxDecoration(
-              color: Colors.black.withOpacity(0.6),
-              borderRadius: BorderRadius.circular(15),
-            ),
-            child: Row(
-              children: [
-                const Icon(
-                  Icons.attach_money_rounded,
-                  size: 12,
-                  color: Colors.green,
-                ),
-                Text(
-                  getPrice(type).toString(),
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 12,
+            Container(
+              padding: const EdgeInsets.only(right: 10),
+              decoration: BoxDecoration(
+                // color: Colors.black.withOpacity(0.1),
+                borderRadius: BorderRadius.circular(5),
+              ),
+              child: Row(
+                children: [
+                  const Icon(
+                    Icons.attach_money_rounded,
+                    size: 17,
+                    color: Colors.green,
                   ),
-                ),
-              ],
+                  Text(
+                    getPrice(type).toString(),
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

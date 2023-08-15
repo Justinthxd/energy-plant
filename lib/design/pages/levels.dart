@@ -56,8 +56,8 @@ class Levels extends StatelessWidget {
                   level: Level(
                     route: '/level1',
                     plants: List.generate(9, (index) => PlantModel(id: index)),
-                    targetEnergy: 25,
-                    money: 500,
+                    targetEnergy: 100,
+                    money: 300,
                   ),
                 );
               },

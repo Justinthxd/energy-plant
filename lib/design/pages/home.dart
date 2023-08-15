@@ -75,7 +75,9 @@ class Home extends StatelessWidget {
                 ),
                 const SizedBox(height: 80),
                 GestureDetector(
-                  onTap: () => context.pushNamed('/levels'),
+                  onTap: () {
+                    context.pushNamed('/levels');
+                  },
                   child: const Icon(
                     Icons.play_arrow_rounded,
                     size: 120,
