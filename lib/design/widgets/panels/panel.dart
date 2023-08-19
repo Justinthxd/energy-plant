@@ -9,9 +9,11 @@ class Panel extends StatelessWidget {
 
   final TextStyle digitStyle = const TextStyle(
     color: Colors.white,
-    fontSize: 20,
+    fontSize: 23,
     fontWeight: FontWeight.bold,
   );
+
+  // ! - change panel design to battery
 
   @override
   Widget build(BuildContext context) {

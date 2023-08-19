@@ -37,30 +37,30 @@ plantSelector(PlantModel plant) {
                 ),
               ],
             ),
-            Container(
-              height: 1,
-              width: 235,
-              color: Colors.white10,
-            ),
-            Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                PlantSelectorItem(
-                  plant: plant,
-                  type: PlantType.electricPlant,
-                ),
-                divider(),
-                PlantSelectorItem(
-                  plant: plant,
-                  type: PlantType.chemicalPlant,
-                ),
-                divider(),
-                PlantSelectorItem(
-                  plant: plant,
-                  type: PlantType.nuclearPlant,
-                ),
-              ],
-            ),
+            // Container(
+            //   height: 1,
+            //   width: 235,
+            //   color: Colors.white10,
+            // ),
+            // Row(
+            //   mainAxisSize: MainAxisSize.min,
+            //   children: [
+            //     PlantSelectorItem(
+            //       plant: plant,
+            //       type: PlantType.electricPlant,
+            //     ),
+            //     divider(),
+            //     PlantSelectorItem(
+            //       plant: plant,
+            //       type: PlantType.chemicalPlant,
+            //     ),
+            //     divider(),
+            //     PlantSelectorItem(
+            //       plant: plant,
+            //       type: PlantType.nuclearPlant,
+            //     ),
+            //   ],
+            // ),
           ],
         ),
       ),

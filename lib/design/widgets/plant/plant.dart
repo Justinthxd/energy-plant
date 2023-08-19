@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:animate_do/animate_do.dart';
 import 'package:custom_pop_up_menu/custom_pop_up_menu.dart';
 import 'package:energy_builder/bloc/level_bloc/level_bloc.dart';
 import 'package:energy_builder/design/widgets/plant/options_selector.dart';
@@ -24,8 +25,9 @@ class WidgetPlant extends StatefulWidget {
 class _WidgetPlantState extends State<WidgetPlant>
     with SingleTickerProviderStateMixin {
   CustomPopupMenuController controller = CustomPopupMenuController();
-  bool firstTime = true;
   late AnimationController animationController;
+  late AnimationController animateController;
+  bool isVisible = false;
 
   @override
   void initState() {
@@ -34,6 +36,7 @@ class _WidgetPlantState extends State<WidgetPlant>
       vsync: this,
       duration: Duration(seconds: widget.plant.getTime()),
     );
+
     animationController.forward();
     Timer(Duration(seconds: widget.plant.getTime()), () {
       if (mounted) {
@@ -47,22 +50,37 @@ class _WidgetPlantState extends State<WidgetPlant>
     context.read<LevelBloc>().add(PlantIsNotReadyEvent(widget.plant.id));
     context.read<LevelBloc>().add(AddMoneyEvent(widget.plant.getEarning()));
     context.read<LevelBloc>().add(AddEnergyEvent(widget.plant.getEnergy()));
-
+    isVisible = true;
     Timer(Duration(seconds: widget.plant.getTime()), () {
       if (mounted) {
         context.read<LevelBloc>().add(PlantIsReadyEvent(widget.plant.id));
         setState(() {});
       }
     });
+    animateController.reset();
+    animateController.forward();
     animationController.reset();
     animationController.forward();
+  }
+
+  _toggleMargin() {
+    margin = 1;
+    Future.delayed(const Duration(milliseconds: 150), () {
+      if (mounted) {
+        margin = 0;
+        setState(() {});
+      }
+    });
   }
 
   @override
   void dispose() {
     animationController.dispose();
+    // animateController.dispose();
     super.dispose();
   }
+
+  double margin = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -75,27 +93,72 @@ class _WidgetPlantState extends State<WidgetPlant>
         onTap: widget.plant.isReady
             ? () {
                 _recolectPlant();
+                _toggleMargin();
               }
             : null,
         child: AnimatedContainer(
           duration: const Duration(milliseconds: 250),
-          curve: Curves.linear,
-          clipBehavior: Clip.antiAlias,
+          margin: EdgeInsets.all(margin),
+          curve: Curves.bounceInOut,
           decoration: BoxDecoration(
             color: widget.plant.isReady
                 ? getColor(widget.plant.type)
                 : getColor(widget.plant.type).withOpacity(0.4),
             borderRadius: BorderRadius.circular(10),
-            // boxShadow: [
-            // BoxShadow(
-            //   blurRadius: 10,
-            //   color: widget.plant.isReady ? Colors.white30 : Colors.black38,
-            //   offset: const Offset(0, 0),
-            // ),
-            // ],
           ),
           child: Stack(
+            clipBehavior: Clip.none,
             children: [
+              Center(
+                child: FadeOutUp(
+                  manualTrigger: true,
+                  delay: const Duration(seconds: 5),
+                  controller: (controller) => animateController = controller,
+                  duration: const Duration(milliseconds: 2500),
+                  child: Visibility(
+                    visible: isVisible,
+                    child: Column(
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const Icon(
+                              Icons.bolt,
+                              color: Colors.yellow,
+                              size: 25,
+                            ),
+                            Text(
+                              widget.plant.getEnergy().round().toString(),
+                              style: const TextStyle(
+                                fontSize: 25,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const SizedBox(width: 50),
+                            const Icon(
+                              Icons.attach_money,
+                              color: Colors.green,
+                              size: 25,
+                            ),
+                            Text(
+                              widget.plant.getEarning().round().toString(),
+                              style: const TextStyle(
+                                fontSize: 25,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
               Center(
                 child: widget.plant.type == PlantType.nuclearPlant
                     ? Image.asset(
@@ -121,27 +184,6 @@ class _WidgetPlantState extends State<WidgetPlant>
                   },
                 ),
               ),
-              // !widget.plant.isReady
-              //     ? Column(
-              //         mainAxisAlignment: MainAxisAlignment.end,
-              //         children: [
-              //           Container(
-              //             margin: const EdgeInsets.symmetric(
-              //                 horizontal: 10, vertical: 10),
-              //             child: AnimatedBuilder(
-              //               animation: animationController,
-              //               builder: (context, child) {
-              //                 return LinearProgressIndicator(
-              //                   color: Colors.white30,
-              //                   backgroundColor: Colors.transparent,
-              //                   value: animationController.value,
-              //                 );
-              //               },
-              //             ),
-              //           ),
-              //         ],
-              //       )
-              //     : const SizedBox(),
             ],
           ),
         ),

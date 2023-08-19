@@ -2,9 +2,9 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 
 import 'package:energy_builder/data/constants/constants.dart';
+import 'package:go_router/go_router.dart';
 
 import '../widgets/home_menu_item.dart';
 

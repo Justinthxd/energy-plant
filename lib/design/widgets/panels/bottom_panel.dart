@@ -25,7 +25,7 @@ class OptionPanel extends StatelessWidget {
               PlantOption(type: PlantType.nuclearPlant),
             ],
           ),
-          Center(
+          const Center(
             child: Row(
               children: [
                 SizedBox(width: 10),
@@ -33,7 +33,7 @@ class OptionPanel extends StatelessWidget {
                   Icons.arrow_back_ios_new_rounded,
                   color: Colors.white30,
                 ),
-                const Spacer(),
+                Spacer(),
                 Icon(
                   Icons.arrow_forward_ios_rounded,
                   color: Colors.white30,

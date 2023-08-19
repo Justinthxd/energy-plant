@@ -50,17 +50,18 @@ class _Level1State extends State<Level1> {
       children: [
         const SizedBox(height: 50),
         const Panel(),
-        const SizedBox(height: 20),
         Expanded(
           child: Center(
             child: Container(
               height: size.height * 0.5,
-              decoration: const BoxDecoration(),
+              decoration: const BoxDecoration(
+                  // color: Colors.purple.withOpacity(0.1),
+                  ),
               child: GridView.builder(
                 padding: const EdgeInsets.all(15),
                 physics: const NeverScrollableScrollPhysics(),
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 3,
+                  crossAxisCount: 2,
                   mainAxisSpacing: 15,
                   crossAxisSpacing: 15,
                 ),

@@ -64,12 +64,12 @@ class PlantModel {
 
   int getTime() {
     return switch (type) {
-      PlantType.hydroPlant => 9,
-      PlantType.windPlant => 15,
-      PlantType.solarPlant => 20,
-      PlantType.electricPlant => 25,
-      PlantType.chemicalPlant => 30,
-      PlantType.nuclearPlant => 40,
+      PlantType.hydroPlant => 3,
+      PlantType.windPlant => 5,
+      PlantType.solarPlant => 10,
+      PlantType.electricPlant => 15,
+      PlantType.chemicalPlant => 20,
+      PlantType.nuclearPlant => 30,
     };
   }
 
