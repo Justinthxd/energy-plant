@@ -1,7 +1,6 @@
+import 'package:energy_builder/data/dictionary/dictionary.dart';
 import 'package:energy_builder/design/pages/levels.dart';
 import 'package:go_router/go_router.dart';
-
-import '../../design/levels/level_1/level_1.dart';
 import '../../design/pages/home.dart';
 
 final router = GoRouter(
@@ -17,10 +16,11 @@ final router = GoRouter(
       path: '/levels',
       builder: (context, state) => const Levels(),
     ),
-    GoRoute(
-      name: '/level1',
-      path: '/level1',
-      builder: (context, state) => const Level1(),
-    ),
+    for (int i = 0; i < levels.length; i++)
+      GoRoute(
+        name: levels[i].route,
+        path: levels[i].route,
+        builder: (context, state) => levels[i].widget,
+      ),
   ],
 );

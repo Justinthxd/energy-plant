@@ -94,10 +94,10 @@ class LevelBloc extends Bloc<LevelEvent, LevelState> {
       } else if (event is AddEnergyEvent) {
         final currentState = state as LevelLoadedState;
         final updatedLevel = currentState.level.copyWith(
-          currentenergy: currentState.level.currentenergy + event.energy,
+          currentenergy: currentState.level.currentEnergy + event.energy,
         );
 
-        if (updatedLevel.currentenergy < updatedLevel.targetEnergy) {
+        if (updatedLevel.currentEnergy < updatedLevel.targetEnergy) {
           emit(LevelLoadedState(updatedLevel));
         } else {
           emit(LevelFinishedState());
@@ -105,7 +105,7 @@ class LevelBloc extends Bloc<LevelEvent, LevelState> {
       } else if (event is RemoveEnergyEvent) {
         final currentState = state as LevelLoadedState;
         final updatedLevel = currentState.level.copyWith(
-          currentenergy: currentState.level.currentenergy - event.energy,
+          currentenergy: currentState.level.currentEnergy - event.energy,
         );
         emit(LevelLoadedState(updatedLevel));
       }

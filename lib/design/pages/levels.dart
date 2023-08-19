@@ -1,6 +1,5 @@
 import 'package:energy_builder/data/constants/constants.dart';
-import 'package:energy_builder/data/models/level.dart';
-import 'package:energy_builder/data/models/plant.dart';
+import 'package:energy_builder/data/dictionary/dictionary.dart';
 import 'package:energy_builder/design/widgets/levels_item.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -50,15 +49,10 @@ class Levels extends StatelessWidget {
                   ),
                 );
               },
-              itemCount: 1,
+              itemCount: levels.length,
               itemBuilder: (BuildContext context, int index) {
                 return LevelsItem(
-                  level: Level(
-                    route: '/level1',
-                    plants: List.generate(4, (index) => PlantModel(id: index)),
-                    targetEnergy: 50,
-                    money: 500,
-                  ),
+                  level: levels[index],
                 );
               },
             ),

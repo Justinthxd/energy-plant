@@ -1,26 +1,23 @@
 import 'package:energy_builder/bloc/level_bloc/level_bloc.dart';
+import 'package:energy_builder/data/constants/constants.dart';
 import 'package:energy_builder/data/dictionary/dictionary.dart';
 import 'package:energy_builder/design/widgets/panels/panel.dart';
-import 'package:flutter/material.dart';
-
-import 'package:energy_builder/data/constants/constants.dart';
 import 'package:energy_builder/design/widgets/plant/square.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 
-class Level1 extends StatefulWidget {
-  const Level1({
-    Key? key,
-  }) : super(key: key);
+class Level2 extends StatefulWidget {
+  const Level2({super.key});
 
   @override
-  State<Level1> createState() => _Level1State();
+  State<Level2> createState() => _Level2State();
 }
 
-class _Level1State extends State<Level1> {
+class _Level2State extends State<Level2> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+
     return Scaffold(
       backgroundColor: backgroundColor,
       body: BlocConsumer<LevelBloc, LevelState>(
@@ -29,32 +26,14 @@ class _Level1State extends State<Level1> {
           if (state is LevelLoadedState) {
             return _levelBody(size);
           } else if (state is LevelFinishedState) {
-            return Center(
-              child: Row(
-                children: [
-                  const SizedBox(width: 100),
-                  IconButton(
-                    onPressed: () {
-                      context
-                          .read<LevelBloc>()
-                          .add(LevelLoadedEvent(levels[1]));
-                      context.pushNamed('/level2');
-                    },
-                    icon: const Icon(
-                      Icons.arrow_forward_ios_rounded,
-                      size: 30,
-                      color: Colors.white,
-                    ),
-                  ),
-                  const Text(
-                    'Level Finished',
-                    style: TextStyle(
-                      fontSize: 30,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white30,
-                    ),
-                  ),
-                ],
+            return const Center(
+              child: Text(
+                'Level Finished',
+                style: TextStyle(
+                  fontSize: 30,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white30,
+                ),
               ),
             );
           }
@@ -69,7 +48,7 @@ class _Level1State extends State<Level1> {
     return Column(
       children: [
         const SizedBox(height: 50),
-        const Panel(title: 'Level 1'),
+        const Panel(title: 'Level 2'),
         Expanded(
           child: Center(
             child: Container(

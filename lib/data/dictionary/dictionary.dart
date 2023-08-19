@@ -1,4 +1,6 @@
 import 'package:energy_builder/data/models/plant.dart';
+import 'package:energy_builder/design/levels/level_1/level_1.dart';
+import 'package:energy_builder/design/levels/level_2/level_2.dart';
 import 'package:energy_builder/utils/keys.dart';
 import 'package:flutter/material.dart';
 
@@ -62,4 +64,40 @@ String getDifficultyName(Difficulty difficulty) {
     Difficulty.medium => 'Medium',
     Difficulty.hard => 'Hard',
   };
+}
+
+List<Level> levels = [
+  Level(
+    id: 1,
+    route: '/level1',
+    difficulty: Difficulty.easy,
+    targetEnergy: 100,
+    money: 500,
+    plants: List.generate(
+      4,
+      (index) => PlantModel(id: index),
+    ),
+    widget: const Level1(),
+  ),
+  Level(
+    id: 2,
+    route: '/level2',
+    difficulty: Difficulty.medium,
+    targetEnergy: 20000,
+    money: 5000,
+    plants: List.generate(
+      9,
+      (index) => PlantModel(id: index),
+    ),
+    widget: const Level2(),
+  ),
+];
+
+getColumns(int value) {
+  switch (value) {
+    case 4:
+      return 2;
+    case 9:
+      return 3;
+  }
 }

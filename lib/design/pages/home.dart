@@ -25,7 +25,7 @@ class Home extends StatelessWidget {
               height: 200,
               width: 200,
               decoration: BoxDecoration(
-                color: const Color.fromARGB(255, 0, 159, 5).withOpacity(0.03),
+                color: const Color.fromARGB(255, 0, 159, 5).withOpacity(0.05),
                 shape: BoxShape.circle,
               ),
             ),
@@ -37,7 +37,7 @@ class Home extends StatelessWidget {
               height: 300,
               width: 300,
               decoration: BoxDecoration(
-                color: const Color.fromARGB(255, 0, 159, 5).withOpacity(0.03),
+                color: const Color.fromARGB(255, 0, 159, 5).withOpacity(0.05),
                 shape: BoxShape.circle,
               ),
             ),
@@ -74,11 +74,11 @@ class Home extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 80),
-                GestureDetector(
-                  onTap: () {
+                IconButton(
+                  onPressed: () {
                     context.pushNamed('/levels');
                   },
-                  child: const Icon(
+                  icon: const Icon(
                     Icons.play_arrow_rounded,
                     size: 120,
                     color: Colors.white,
@@ -86,7 +86,7 @@ class Home extends StatelessWidget {
                 ),
                 const Spacer(),
                 Container(
-                  width: MediaQuery.of(context).size.width,
+                  width: size.width,
                   margin: const EdgeInsets.only(bottom: 30),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,

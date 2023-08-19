@@ -1,12 +1,16 @@
-import 'package:energy_builder/bloc/level_bloc/level_bloc.dart';
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'package:energy_builder/bloc/level_bloc/level_bloc.dart';
 
 class Panel extends StatelessWidget {
   const Panel({
     Key? key,
+    required this.title,
   }) : super(key: key);
 
+  final String title;
   final TextStyle digitStyle = const TextStyle(
     color: Colors.white,
     fontSize: 23,
@@ -24,11 +28,11 @@ class Panel extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 15),
             child: Column(
               children: [
-                const Align(
+                Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
-                    'Level 1',
-                    style: TextStyle(
+                    title,
+                    style: const TextStyle(
                       color: Colors.white24,
                       fontSize: 25,
                       fontWeight: FontWeight.w500,
@@ -48,7 +52,7 @@ class Panel extends StatelessWidget {
                       size: 25,
                     ),
                     Text(
-                      '${state.level.currentenergy}',
+                      '${state.level.currentEnergy}',
                       style: digitStyle,
                     ),
                     Text(
@@ -85,7 +89,7 @@ class Panel extends StatelessWidget {
                         curve: Curves.easeInOut,
                         tween: Tween(
                           begin: 0,
-                          end: state.level.currentenergy /
+                          end: state.level.currentEnergy /
                               state.level.targetEnergy,
                         ),
                         builder: (context, value, _) => LinearProgressIndicator(

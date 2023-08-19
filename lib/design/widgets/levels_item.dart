@@ -24,27 +24,28 @@ class LevelsItem extends StatelessWidget {
         context.pushNamed(level.route);
       },
       title: Text(
-        'Level ${level.id + 1}',
+        'Level ${level.id}',
         style: const TextStyle(
           color: Colors.white,
-          fontSize: 22,
+          fontSize: 25,
           fontWeight: FontWeight.bold,
         ),
       ),
       subtitle: Text(
         getDifficultyName(level.difficulty),
         style: const TextStyle(
+          fontSize: 18,
           color: Colors.white70,
         ),
       ),
       leading: Icon(
         Icons.bolt,
-        size: 30,
+        size: 40,
         color: getDifficultyColor(level.difficulty),
       ),
       trailing: const Icon(
         Icons.play_arrow_rounded,
-        size: 30,
+        size: 40,
         color: Colors.white70,
       ),
     );
