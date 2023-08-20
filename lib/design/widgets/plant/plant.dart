@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:animate_do/animate_do.dart';
 import 'package:custom_pop_up_menu/custom_pop_up_menu.dart';
-import 'package:energy_builder/bloc/level_bloc/level_bloc.dart';
+import 'package:energy_builder/design/bloc/level_bloc/level_bloc.dart';
 import 'package:energy_builder/design/widgets/plant/options_selector.dart';
 import 'package:flutter/material.dart';
 

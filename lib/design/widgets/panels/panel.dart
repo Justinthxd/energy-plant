@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:energy_builder/bloc/level_bloc/level_bloc.dart';
+import 'package:energy_builder/design/bloc/level_bloc/level_bloc.dart';
 
 class Panel extends StatelessWidget {
   const Panel({

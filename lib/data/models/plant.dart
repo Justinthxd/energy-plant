@@ -1,5 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:energy_builder/utils/keys.dart';
+import 'package:energy_builder/core/utils/keys.dart';
 
 enum PlantType {
   hydroPlant,

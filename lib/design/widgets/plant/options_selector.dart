@@ -1,7 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:ui';
 
-import 'package:energy_builder/bloc/level_bloc/level_bloc.dart';
+import 'package:energy_builder/design/bloc/level_bloc/level_bloc.dart';
 import 'package:energy_builder/data/models/plant.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

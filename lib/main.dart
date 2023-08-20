@@ -1,8 +1,8 @@
-import 'package:energy_builder/bloc/level_bloc/level_bloc.dart';
-import 'package:energy_builder/config/router/router.dart';
+import 'package:energy_builder/design/bloc/level_bloc/level_bloc.dart';
+import 'package:energy_builder/core/config/router/router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'config/theme/theme.dart';
+import 'core/config/theme/theme.dart';
 
 void main() => runApp(const MyApp());
 

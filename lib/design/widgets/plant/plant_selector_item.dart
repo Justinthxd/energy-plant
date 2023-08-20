@@ -1,4 +1,4 @@
-import 'package:energy_builder/bloc/level_bloc/level_bloc.dart';
+import 'package:energy_builder/design/bloc/level_bloc/level_bloc.dart';
 import 'package:flutter/material.dart';
 
 import 'package:energy_builder/data/dictionary/dictionary.dart';

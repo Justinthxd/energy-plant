@@ -1,7 +1,7 @@
 import 'package:energy_builder/data/models/plant.dart';
 import 'package:energy_builder/design/levels/level_1/level_1.dart';
 import 'package:energy_builder/design/levels/level_2/level_2.dart';
-import 'package:energy_builder/utils/keys.dart';
+import 'package:energy_builder/core/utils/keys.dart';
 import 'package:flutter/material.dart';
 
 import '../models/level.dart';

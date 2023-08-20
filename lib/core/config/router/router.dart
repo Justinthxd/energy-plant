@@ -1,7 +1,7 @@
 import 'package:energy_builder/data/dictionary/dictionary.dart';
 import 'package:energy_builder/design/pages/levels.dart';
 import 'package:go_router/go_router.dart';
-import '../../design/pages/home.dart';
+import '../../../design/pages/home.dart';
 
 final router = GoRouter(
   initialLocation: '/',
